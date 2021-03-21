@@ -16,9 +16,9 @@ export default function Offers() {
           />
         </svg>
       </span>
-      <span class="absolute h-4 w-4 right-0 top-0 -mt-2 -mr-2">
-        <span class="animate-ping absolute inline-flex h-full w-3 rounded-full bg-blue-400 opacity-25"></span>
-        <span class="relative inline-flex rounded-full h-3 w-3 bg-blue-500"></span>
+      <span className="absolute h-4 w-4 right-0 top-0 -mt-2 -mr-2">
+        <span className="animate-ping absolute inline-flex h-full w-3 rounded-full bg-yellow-400 opacity-25" />
+        <span className="relative inline-flex rounded-full h-3 w-3 bg-yellow-500" />
       </span>
     </div>
   );
