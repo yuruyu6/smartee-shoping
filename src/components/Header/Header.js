@@ -7,7 +7,7 @@ export default function Header() {
   return (
     <div className="bg-white shadow">
     <div className="container mx-auto">
-      <nav className="flex items-center w-full h-16">
+      <nav className="block md:flex text-center items-center w-full md:h-16">
         <div className="flex-none px-2 md:px-16">
           <Logo />
         </div>
