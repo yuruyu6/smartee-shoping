@@ -7,8 +7,7 @@ export default function AddProductsGroup() {
 
   useEffect(() => {
     axios.get('/categories').then((response) => {
-      setCategories(response.data);
-      console.log(categories);
+      setCategories(response.data); 
       setIsLoaded(true);
     });
   }, []);

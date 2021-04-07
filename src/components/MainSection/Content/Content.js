@@ -1,6 +1,4 @@
-import axios from 'axios';
-import CustomInput from '../../UI/CustomInput';
-import { useEffect, useState } from 'react';
+
 import { useParams } from 'react-router-dom';
 
 export default function Content() {

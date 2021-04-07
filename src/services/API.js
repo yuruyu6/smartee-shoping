@@ -1,9 +1,13 @@
-import axios from "axios"
+import axios from 'axios';
 
-const getProducts = () => {
-    axios.get('/products').then(products => {
-        return products
-    })
-}
+export const getProducts = () => {
+  axios.get('/products').then((products) => {
+    return products;
+  });
+};
 
-export default getProducts;
+export const getCategories = () => {
+  axios.get('/categories').then((categories) => {
+    return categories;
+  });
+};
