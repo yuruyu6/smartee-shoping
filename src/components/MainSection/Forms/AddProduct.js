@@ -3,6 +3,7 @@ import { fetchProducts } from '../../../redux/actions/products';
 import { fetchCategories } from '../../../redux/actions/categories';
 import { useEffect, useState } from 'react';
 import ProductCard from '../ProductCard';
+import { createProductGroup } from '../../../redux/actions/productsGroup';
 
 export default function AddProduct() {
   const dispatch = useDispatch();
@@ -10,46 +11,52 @@ export default function AddProduct() {
   const categories = useSelector(
     ({ categories }) => categories.categories
   );
+  const message = useSelector(({ productsGroup }) => productsGroup.message);
   const isLoaded = useSelector(({ products }) => products.isLoaded);
+
   const [isValid, setIsValid] = useState(false);
   const [newProductCategory, setNewProductCategory] = useState({
-    selectedProducts: [],
+    productIds: [],
     category: '',
     title: '',
-    photoURL: 'fds',
+    photoURL: '',
   });
 
   useEffect(() => {
     dispatch(fetchCategories());
     dispatch(fetchProducts());
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     setIsValid(
-      newProductCategory.selectedProducts.length &&
+      newProductCategory.productIds.length &&
         newProductCategory.title &&
         newProductCategory.category &&
         newProductCategory.photoURL
     );
   }, [newProductCategory]);
 
+  useEffect(() => {
+    console.log(message);
+  }, [message]);
+
   const onProductCardClick = (productId) => {
-    newProductCategory.selectedProducts.includes(productId)
+    newProductCategory.productIds.includes(productId)
       ? setNewProductCategory({
           ...newProductCategory,
-          selectedProducts: [
-            ...newProductCategory.selectedProducts.filter(
+          productIds: [
+            ...newProductCategory.productIds.filter(
               (i) => i !== productId
             ),
           ],
+          photoURL: products.find((i) => i._id === productId)?.images[0],
         })
       : setNewProductCategory({
           ...newProductCategory,
-          selectedProducts: [
-            ...newProductCategory.selectedProducts,
-            productId,
-          ],
+          productIds: [...newProductCategory.productIds, productId],
+          photoURL: products.find((i) => i._id === productId)?.images[0],
         });
+    console.log(newProductCategory);
   };
 
   const onCategorySelect = (e) =>
@@ -63,6 +70,10 @@ export default function AddProduct() {
       ...newProductCategory,
       title: e.target.value,
     });
+
+  const onClickSubmit = () => {
+    dispatch(createProductGroup(newProductCategory));
+  };
 
   return (
     <div>
@@ -104,7 +115,7 @@ export default function AddProduct() {
           {products.map((product) => (
             <div
               className={
-                newProductCategory.selectedProducts.includes(product._id)
+                newProductCategory.productIds.includes(product._id)
                   ? 'transition-colors bg-gray-200 cursor-pointer'
                   : 'transition-colors cursor-pointer'
               }
@@ -118,8 +129,12 @@ export default function AddProduct() {
       ) : (
         <p>Выполяется загрузка...</p>
       )}
-      <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
-        <button disabled={!isValid} class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-yellow-500 disabled:opacity-20 hover:bg-opacity-75 transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500">
+      <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
+        <button
+          disabled={!isValid}
+          onClick={() => onClickSubmit()}
+          className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-yellow-500 disabled:opacity-20 hover:bg-opacity-75 transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
+        >
           Сохранить
         </button>
       </div>

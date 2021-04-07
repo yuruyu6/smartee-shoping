@@ -1,6 +1,5 @@
 const initialState = {
   products: [],
-  categories: [],
   isLoaded: false,
 };
 

@@ -15,6 +15,7 @@ export const fetchCategories = () => (dispatch) => {
     dispatch(setCategories(data));
   });
 };
+
 export const setCategories = (items) => ({
   type: 'SET_CATEGORIES',
   payload: items,
