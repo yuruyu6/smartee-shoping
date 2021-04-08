@@ -86,7 +86,7 @@ export default function SideMenu() {
             </svg>
           </div>
 
-          <p className="cursor-pointer width-100 leading-10 font-medium text-sm opacity-75">
+          <p className="cursor-pointer leading-10 font-medium text-sm opacity-75">
             Жесткие диски (SSD)
           </p>
         </Link>

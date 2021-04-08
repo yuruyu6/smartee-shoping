@@ -6,8 +6,17 @@ module.exports = {
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
       },
+      keyframes: {
+        flash: {
+          'from, 50%, to': { opacity: '1' },
+          '25%, 75%': { opacity: '0' },
+        },
+      },
       gridTemplateColumns: {
         layout: '300px minmax(0, 1fr)',
+      },
+      animation: {
+        'spin-slow': 'flash 1s linear',
       },
     },
   },
@@ -17,4 +26,4 @@ module.exports = {
     },
   },
   plugins: [],
-};
+}

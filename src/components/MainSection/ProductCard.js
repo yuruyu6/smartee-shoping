@@ -54,8 +54,6 @@ export default function Card({
             {orders}
           </p>
         ) : null}
-
-        {/* <p>{dayjs(edited).format('DD.MM.YYYY')}</p> */}
       </div>
     </div>
   );

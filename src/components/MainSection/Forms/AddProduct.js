@@ -11,7 +11,6 @@ export default function AddProduct() {
   const categories = useSelector(
     ({ categories }) => categories.categories
   );
-  const message = useSelector(({ productsGroup }) => productsGroup.message);
   const isLoaded = useSelector(({ products }) => products.isLoaded);
 
   const [isValid, setIsValid] = useState(false);
@@ -35,10 +34,6 @@ export default function AddProduct() {
         newProductCategory.photoURL
     );
   }, [newProductCategory]);
-
-  useEffect(() => {
-    console.log(message);
-  }, [message]);
 
   const onProductCardClick = (productId) => {
     newProductCategory.productIds.includes(productId)
@@ -73,6 +68,12 @@ export default function AddProduct() {
 
   const onClickSubmit = () => {
     dispatch(createProductGroup(newProductCategory));
+    setNewProductCategory({
+      productIds: [],
+      category: '',
+      title: '',
+      photoURL: '',
+    });
   };
 
   return (
@@ -83,6 +84,7 @@ export default function AddProduct() {
           <p className="text-lg">Название:</p>
           <input
             onInput={(e) => onTitleInput(e)}
+            value={newProductCategory.title}
             type="text"
             className="block w-96 py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"
           />
@@ -95,6 +97,7 @@ export default function AddProduct() {
               className="block w-96 text-gray-700 py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"
               name="animals"
               onChange={(e) => onCategorySelect(e)}
+              value={newProductCategory.category}
             >
               <option value="">Выберите категорию</option>
               {categories.map((category) => (

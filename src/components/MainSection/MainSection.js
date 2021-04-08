@@ -1,6 +1,5 @@
 import SideMenu from './SideMenu';
 import Content from './Content/Content';
-import AddProductsGroup from './Forms/AddProductsGroup';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import AddProduct from './Forms/AddProduct';
 
@@ -17,10 +16,6 @@ export default function MainSection() {
           <div className="">
             <div className="px-8 py-6 bg-white rounded-md shadow">
               <Switch>
-                <Route
-                  path="/addProductsGroup"
-                  children={<AddProductsGroup />}
-                ></Route>
                 <Route
                   path="/addProduct"
                   children={<AddProduct />}
