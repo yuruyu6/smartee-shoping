@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import ProductCard from '../ProductCard';
 import { createProductGroup } from '../../../redux/actions/productsGroup';
 
-export default function AddProduct() {
+export default function AddProductGroup() {
   const dispatch = useDispatch();
   const products = useSelector(({ products }) => products.products);
   const categories = useSelector(
@@ -51,7 +51,6 @@ export default function AddProduct() {
           productIds: [...newProductCategory.productIds, productId],
           photoURL: products.find((i) => i._id === productId)?.images[0],
         });
-    console.log(newProductCategory);
   };
 
   const onCategorySelect = (e) =>
@@ -78,7 +77,7 @@ export default function AddProduct() {
 
   return (
     <div>
-      <h1>Создание нового товара</h1>
+      <h1 className="text-3xl font-bold mb-3">Создание нового товара</h1>
       <div className="block xl:flex mb-4">
         <div className="flex-1">
           <p className="text-lg">Название:</p>

@@ -1,7 +1,8 @@
 import SideMenu from './SideMenu';
 import Content from './Content/Content';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import AddProduct from './Forms/AddProduct';
+import AddProductGroup from './Forms/AddProductGroup';
+import ButtonBlock from './ButtonBlock';
 
 export default function MainSection() {
   return (
@@ -13,12 +14,13 @@ export default function MainSection() {
               <SideMenu />
             </div>
           </div>
-          <div className="">
+          <div>
+            <ButtonBlock />
             <div className="px-8 py-6 bg-white rounded-md shadow">
               <Switch>
                 <Route
-                  path="/addProduct"
-                  children={<AddProduct />}
+                  path="/addProductGroup"
+                  children={<AddProductGroup />}
                 ></Route>
                 <Route path="/:params" children={<Content />}></Route>
               </Switch>

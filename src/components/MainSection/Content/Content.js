@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import ProductCard from '../ProductCard';
+import ProductGroupCard from '../ProductGroupCard';
 import { fetchProductGroupByCategory } from '../../../redux/actions/productsGroup';
 
 export default function Content() {
@@ -13,7 +13,6 @@ export default function Content() {
   let { params } = useParams();
 
   useEffect(() => {
-    console.log(products.length);
     dispatch(fetchProductGroupByCategory(params));
   }, [params, dispatch]);
 
@@ -21,13 +20,13 @@ export default function Content() {
     <div>
       {(isLoaded && products.length > 0 )? (
         <div>
-          <h1>{products[0].category.title}</h1>
+          <h1 className="text-3xl font-bold">{products[0].category.title}</h1>
           <div className="grid grid-cols-2 xl:grid-cols-4">
-          {products[0].productIds.map((product) => (
+          {products.map((product) => (
             <div
               key={product._id}
             >
-              <ProductCard {...product} />
+              <ProductGroupCard {...product} />
             </div>
           ))}
         </div>
