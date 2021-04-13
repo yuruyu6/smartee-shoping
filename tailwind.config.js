@@ -3,6 +3,9 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      height: {
+        cardphoto: '257px',
+      },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
       },

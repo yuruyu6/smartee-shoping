@@ -1,9 +1,10 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchProducts } from '../../../redux/actions/products';
-import { fetchCategories } from '../../../redux/actions/categories';
 import { useEffect, useState } from 'react';
-import ProductCard from '../ProductCard';
-import { createProductGroup } from '../../../redux/actions/productsGroup';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchProducts } from '../redux/actions/products';
+import { fetchCategories } from '../redux/actions/categories';
+import { createProductGroup } from '../redux/actions/productsGroup';
+import ProductCard from '../components/ProductCard/ProductCard';
+import useDebounce from '../hooks/useDebounce';
 
 export default function AddProductGroup() {
   const dispatch = useDispatch();
@@ -14,17 +15,28 @@ export default function AddProductGroup() {
   const isLoaded = useSelector(({ products }) => products.isLoaded);
 
   const [isValid, setIsValid] = useState(false);
+  const [selectedProducts, setSelectedProducts] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
   const [newProductCategory, setNewProductCategory] = useState({
     productIds: [],
     category: '',
     title: '',
     photoURL: '',
   });
+  const debouncedSearchTerm = useDebounce(searchTerm, 500);
 
   useEffect(() => {
     dispatch(fetchCategories());
     dispatch(fetchProducts());
   }, [dispatch]);
+
+  useEffect(() => {
+    setSelectedProducts(products);
+  }, [products]);
+
+  useEffect(() => {
+    dispatch(fetchProducts(debouncedSearchTerm));
+  }, [dispatch, debouncedSearchTerm]);
 
   useEffect(() => {
     setIsValid(
@@ -75,6 +87,24 @@ export default function AddProductGroup() {
     });
   };
 
+  const onProductTitleSearchInput = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
+  const onClickSelectAll = () => {
+    setNewProductCategory({
+      ...newProductCategory,
+      productIds: selectedProducts.map((i) => i._id),
+    });
+  };
+
+  const onClickUnselectAll = () => {
+    setNewProductCategory({
+      ...newProductCategory,
+      productIds: [],
+    });
+  };
+
   return (
     <div>
       <h1 className="text-3xl font-bold mb-3">Создание нового товара</h1>
@@ -111,10 +141,29 @@ export default function AddProductGroup() {
           )}
         </div>
       </div>
-      <p className="text-lg">Выберите товары:</p>
+      <div className="mb-3">
+        <p className="text-lg">Выберите товары:</p>
+        <input
+          onInput={(e) => onProductTitleSearchInput(e)}
+          className="inline-flex py-1.5 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"
+          type="text"
+        />
+        <button
+          onClick={() => onClickSelectAll()}
+          className="inline-flex justify-center py-2 px-4 ml-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-yellow-500 disabled:opacity-20 hover:bg-opacity-75 transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
+        >
+          Выбрать все
+        </button>
+        <button
+          onClick={() => onClickUnselectAll()}
+          className="inline-flex justify-center py-2 px-4 ml-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-yellow-500 disabled:opacity-20 hover:bg-opacity-75 transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
+        >
+          Снять все
+        </button>
+      </div>
       {isLoaded ? (
         <div className="grid grid-cols-2 xl:grid-cols-4">
-          {products.map((product) => (
+          {selectedProducts.map((product) => (
             <div
               className={
                 newProductCategory.productIds.includes(product._id)

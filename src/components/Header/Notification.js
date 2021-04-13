@@ -2,11 +2,11 @@ import { useSelector } from 'react-redux';
 
 export default function Notification() {
   const notificationMessage = useSelector(
-    ({ productsGroup }) => productsGroup.notificationMessage
+    ({ ui }) => ui.notificationMessage
   );
 
   const notificationColor = useSelector(
-    ({ productsGroup }) => productsGroup.notificationColor
+    ({ ui }) => ui.notificationColor
   );
 
   return notificationMessage ? (

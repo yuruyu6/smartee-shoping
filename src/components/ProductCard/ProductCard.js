@@ -1,3 +1,5 @@
+const imageSize = 350;
+
 export default function ProductCard({
   images,
   title,
@@ -6,10 +8,10 @@ export default function ProductCard({
   orders,
   edited,
 }) {
-  const imageSize = 350;
   return (
-    <div className="p-4 border-b border-opacity-25">
-      <img className="h-auto"
+    <div className="p-4 border-b border-opacity-25" title={title}>
+      <img
+        className="h-auto"
         src={images[0] + `_${imageSize}x${imageSize}.jpg`}
         alt={title}
       />

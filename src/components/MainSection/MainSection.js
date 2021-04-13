@@ -1,8 +1,10 @@
 import SideMenu from './SideMenu';
 import Content from './Content/Content';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import AddProductGroup from './Forms/AddProductGroup';
+import AddProductGroup from '../../forms/AddProductGroup';
+import AddProduct from '../../forms/AddProduct';
 import ButtonBlock from './ButtonBlock';
+import ProductGroupInfo from '../../pages/ProductGroupInfo';
 
 export default function MainSection() {
   return (
@@ -22,6 +24,11 @@ export default function MainSection() {
                   path="/addProductGroup"
                   children={<AddProductGroup />}
                 ></Route>
+                <Route
+                  path="/addProduct"
+                  children={<AddProduct />}
+                ></Route>
+                <Route path="/product/:params" children={<ProductGroupInfo />}></Route>
                 <Route path="/:params" children={<Content />}></Route>
               </Switch>
             </div>
