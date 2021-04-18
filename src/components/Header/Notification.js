@@ -5,18 +5,24 @@ export default function Notification() {
     ({ ui }) => ui.notificationMessage
   );
 
-  const notificationColor = useSelector(
-    ({ ui }) => ui.notificationColor
-  );
+  const notificationType = useSelector(({ ui }) => ui.notificationType);
 
   return notificationMessage ? (
     <div
-      className={`h-16 animate-spin-slow flex items-center bg-${notificationColor}-100 transition-all`}
+      className={
+        notificationType === 'success'
+          ? 'h-16 animate-spin-slow flex items-center bg-green-100 transition-all'
+          : 'h-16 animate-spin-slow flex items-center bg-red-100 transition-all'
+      }
     >
       <div className="container align-middle mx-auto">
         <div className="flex items-center px-5 rounded ">
           <div
-            className={`rounded bg-${notificationColor}-400 hover:bg-opacity-75 cursor-pointer transition`}
+            className={
+              notificationType === 'success'
+                ? 'rounded bg-green-400 hover:bg-opacity-75 cursor-pointer transition'
+                : 'rounded bg-red-400 hover:bg-opacity-75 cursor-pointer transition'
+            }
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

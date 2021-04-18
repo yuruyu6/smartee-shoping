@@ -1,6 +1,7 @@
 const initialState = {
   items: [],
-  isLoaded: false
+  isLoaded: false,
+  sortType: ''
 };
 
 const productsGroup = (state = initialState, action) => {
@@ -11,6 +12,13 @@ const productsGroup = (state = initialState, action) => {
         items: action.payload,
         isLoaded: true,
       };
+
+    case 'SET_SORT_BY':
+      return {
+        ...state,
+        sortType: action.payload,
+      };
+
     case 'CLEAR_PRODUCT_GROUP':
       return {
         ...state,

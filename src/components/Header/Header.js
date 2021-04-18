@@ -15,7 +15,7 @@ export default function Header() {
           <div className="flex-auto pl-8">
             <Search />
           </div>
-          <div className="flex-none px-6">
+          <div className="hidden md:block flex-none px-6">
             <Offers />
           </div>
         </nav>

@@ -1,6 +1,6 @@
 const initialState = {
     notificationMessage: '',
-    notificationColor: 'green',
+    notificationType: 'success',
   };
 
 const ui = (state = initialState, action) => {
@@ -9,13 +9,13 @@ const ui = (state = initialState, action) => {
       return {
         ...state,
         notificationMessage: action.payload,
-        notificationColor: 'green',
+        notificationType: 'success',
       };
     case 'SHOW_DANGER_NOTIFICATION':
       return {
         ...state,
         notificationMessage: action.payload,
-        notificationColor: 'red',
+        notificationType: 'danger',
       };
     case 'HIDE_NOTIFICATION':
       return {

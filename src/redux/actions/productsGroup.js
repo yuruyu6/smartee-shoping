@@ -41,6 +41,11 @@ export const fetchProductGroupById = (id) => (
     .then(({ data }) => dispatch(setProductGroup(data)));
 };
 
+export const setSortBy = (sortType) => ({
+  type: 'SET_SORT_BY',
+  payload: sortType,
+});
+
 export const setProductGroup = (data) => ({
   type: 'SET_PRODUCT_GROUP',
   payload: data,
