@@ -6,6 +6,7 @@ import {
   setSortBy,
 } from '../redux/actions/productsGroup';
 import ProductGroupCard from '../components/ProductGroupCard/ProductGroupCard';
+import SortPopup from '../components/SortPopup/SortPopup';
 const imageSize = 350;
 
 export default function ProductGroupInfo() {
@@ -17,11 +18,14 @@ export default function ProductGroupInfo() {
   const isLoaded = useSelector(
     ({ productsGroup }) => productsGroup.isLoaded
   );
-  const sortType = useSelector(
-    ({ productsGroup }) => productsGroup.sortType
-  );
 
-  useEffect(() => {
+  const sortTypes = [
+    { name: 'цене', type: 'asc_price' },
+    { name: 'рейтингу', type: 'desc_rating' },
+    { name: 'количеству заказов', type: 'desc_orders' },
+  ];
+
+  /* useEffect(() => {
     switch (sortType) {
       case 'asc_price':
         console.log('asc_price');
@@ -37,10 +41,11 @@ export default function ProductGroupInfo() {
         break;
     }
   }, [sortType]);
-
-  const onSortingDropdownChange = (e) => {
-    dispatch(setSortBy(e.target.value));
-  };
+*/
+  const onSelectSortType = (sortType) => {
+    console.log(sortType);
+    /* dispatch(setSortBy(e.target.value)); */
+  }; 
 
   useEffect(() => {
     dispatch(fetchProductGroupById(params));
@@ -76,27 +81,7 @@ export default function ProductGroupInfo() {
           </div>
           <div>
             <div className="relative inline-flex my-6">
-              <p className="text-lgm m-auto mr-2">Сортировать:</p>
-              <svg
-                className="w-2 h-2 absolute top-0 right-0 m-4 pointer-events-none"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 412 232"
-              >
-                <path
-                  d="M206 171.144L42.678 7.822c-9.763-9.763-25.592-9.763-35.355 0-9.763 9.764-9.763 25.592 0 35.355l181 181c4.88 4.882 11.279 7.323 17.677 7.323s12.796-2.441 17.678-7.322l181-181c9.763-9.764 9.763-25.592 0-35.355-9.763-9.763-25.592-9.763-35.355 0L206 171.144z"
-                  fill="#648299"
-                  fillRule="nonzero"
-                />
-              </svg>
-              <select
-                onChange={(e) => onSortingDropdownChange(e)}
-                className="border border-gray-300 rounded text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none"
-              >
-                <option value="asc_price">По возрастанию цены</option>
-                <option value="desc_price">По убыванию цены</option>
-                <option value="desc_rating">По рейтингу</option>
-                <option value="desc_orders">По количеству заказов</option>
-              </select>
+              <SortPopup items={sortTypes} activeSortType="asc_price" onClickSortType={onSelectSortType}/>
             </div>
             <div className="border rounded">
               {productGroup.productIds?.map((product) => (

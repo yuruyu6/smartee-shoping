@@ -6,7 +6,7 @@ import Notification from './Notification';
 
 export default function Header() {
   return (
-    <div className="sticky top-0 z-10 bg-white shadow">
+    <div className="sticky top-0 z-50 bg-white shadow">
       <div className="container mx-auto">
         <nav className="block md:flex text-center items-center w-full md:h-16">
           <div className="flex-none px-2 md:px-16">
