@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { getCategories } from "../../utils/API";
 
 export const setLoaded = (payload) => ({
   type: 'SET_LOADED',
@@ -11,7 +11,7 @@ export const fetchCategories = () => (dispatch) => {
     payload: false,
   });
 
-  axios.get('/categories').then(({ data }) => {
+  getCategories().then(({ data }) => {
     dispatch(setCategories(data));
   });
 };

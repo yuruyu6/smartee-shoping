@@ -1,11 +1,14 @@
-import axios from 'axios';
-
-axios.defaults.baseURL = 'http://localhost:5000';
+import {
+  addProductGroup,
+  getProductGroupByCategoryName,
+  getProductGroupById,
+  patchProductGroupById,
+} from '../../utils/API';
 
 export const createProductGroup = (createProductGroupDTO) => (
   dispatch
 ) => {
-  axios.post('/product-groups', createProductGroupDTO).then(
+  addProductGroup(createProductGroupDTO).then(
     () =>
       dispatch(
         setProductGroupSuccessResponse('Новая группа успешно создана')
@@ -23,22 +26,34 @@ export const fetchProductGroupByCategory = (categoryName) => (
     payload: false,
   });
 
-  axios
-    .get(`/product-groups/detailed/${categoryName}`)
-    .then(({ data }) => dispatch(setProductGroup(data)));
+  getProductGroupByCategoryName(categoryName).then(({ data }) =>
+    dispatch(setProductGroup(data))
+  );
 };
 
-export const fetchProductGroupById = (id) => (
-  dispatch
-) => {
+export const fetchProductGroupById = (id) => (dispatch) => {
   dispatch({
     type: 'CLEAR_PRODUCT_GROUP',
     payload: false,
   });
 
-  axios
-    .get(`/product-groups/${id}`)
-    .then(({ data }) => dispatch(setProductGroup(data)));
+  getProductGroupById(id).then(({ data }) =>
+    dispatch(setProductGroup(data))
+  );
+};
+
+export const updateProductGroupById = (id) => (dispatch) => {
+  dispatch(
+    setProductGroupSuccessResponse('Запрос на обновление успешно создан')
+  );
+
+  patchProductGroupById(id).then(
+    () => '',
+    (error) =>
+      dispatch(setProductGroupFailureResponse(error.response.data.message))
+  );
+
+  setTimeout(() => dispatch({ type: 'HIDE_NOTIFICATION' }), 7500);
 };
 
 export const setSortBy = (sortType) => ({

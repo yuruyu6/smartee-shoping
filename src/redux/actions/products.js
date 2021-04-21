@@ -1,25 +1,19 @@
-import axios from 'axios';
-
-axios.defaults.baseURL = 'http://localhost:5000';
+import { getProductsBySearchTerm, addProductById } from '../../utils/API';
 
 export const setLoaded = (payload) => ({
   type: 'SET_LOADED',
   payload,
 });
 
-export const fetchProducts = (searchTeam) => (
-  dispatch
-) => {
+export const fetchProducts = (searchTeam) => (dispatch) => {
   dispatch({
     type: 'SET_LOADED',
     payload: false,
   });
 
-  axios
-    .post('/products/search', { title: searchTeam })
-    .then(({ data }) => {
-      dispatch(setProducts(data));
-    });
+  getProductsBySearchTerm(searchTeam).then(({ data }) => {
+    dispatch(setProducts(data));
+  });
 };
 
 export const addProduct = (productId) => (dispatch) => {
@@ -28,8 +22,7 @@ export const addProduct = (productId) => (dispatch) => {
     payload: true,
   });
 
-  axios
-    .post('/products', { productId })
+  addProductById(productId)
     .then(
       () =>
         dispatch(setAddProductSuccessResponse('Товар успешно добавлен')),

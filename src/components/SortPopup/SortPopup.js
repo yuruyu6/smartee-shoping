@@ -33,13 +33,13 @@ export default memo(function SortPopup({
 
   return (
     <div ref={sortPopupRef}>
-      <div className="flex items-center">        
-        <p className="font-bold opacity-75">Сортировать по:</p>
+      <div className="flex items-center ">        
+        <p className="opacity-75 font-bold">Сортировать по:</p>
         <span
-          className="cursor-pointer border-b-2 mx-2 border-dashed text-yellow-500 border-yellow-500"
+          className="cursor-pointer font-semibold border-b-2 mx-2 border-dashed text-yellow-500 border-yellow-500"
           onClick={() => toggleVisiblePopup()}
         >
-          цене
+          {activeSortType.name}
         </span>
         <svg
           className={
@@ -60,7 +60,7 @@ export default memo(function SortPopup({
         </svg>
       </div>
       {visiblePopup && (
-        <div className="overflow-hidden absolute right-0 py-2 shadow rounded bg-white z-10 w-44 ">
+        <div className="overflow-hidden absolute right-0 py-2 shadow rounded bg-white z-10 w-48 ">
           <ul>
             {items &&
               items.map((i) => (
@@ -68,7 +68,7 @@ export default memo(function SortPopup({
                   key={i.type}
                   onClick={() => onSelectItem(i.type)}
                   className={
-                    i.type === activeSortType
+                    i.type === activeSortType.type
                       ? 'p-3 hover:bg-gray-200 transition cursor-pointer font-bold text-yellow-500'
                       : 'p-3 hover:bg-gray-200 transition cursor-pointer'
                   }

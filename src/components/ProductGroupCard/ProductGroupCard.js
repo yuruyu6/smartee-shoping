@@ -18,7 +18,7 @@ export default function ProductGroupCard({
         />
       </div>
       <div className="col-span-5 lg:col-span-6">
-        <p className="truncate w-full lg:w-1/2" title={title}>
+        <p className="truncate w-full xl:w-1/2" title={title}>
           {title}
         </p>
         <p className="text-xl py-1 font-semibold">{storeName}</p>
@@ -61,7 +61,7 @@ export default function ProductGroupCard({
           </div>
           <div>
             <p
-              className="hidden lg:flex text-sm text-gray-400"
+              className="hidden xl:flex text-sm text-gray-400"
               title="Последнее обновление"
             >
               <svg
