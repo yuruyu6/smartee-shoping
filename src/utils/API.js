@@ -23,12 +23,12 @@ const getProductGroupById = (id) => {
 };
 
 const patchProductGroupById = (id) => {
-    return axios.patch(`/product-groups/${id}`)
-}
+  return axios.patch(`/product-groups/${id}`);
+};
 
 const getCategories = () => {
-    return axios.get('/categories')
-}
+  return axios.get('/categories');
+};
 
 export {
   getProductsBySearchTerm,
@@ -37,5 +37,5 @@ export {
   getProductGroupByCategoryName,
   getProductGroupById,
   patchProductGroupById,
-  getCategories
+  getCategories,
 };

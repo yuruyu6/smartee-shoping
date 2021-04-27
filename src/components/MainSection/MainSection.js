@@ -1,8 +1,8 @@
 import SideMenu from './SideMenu';
 import Content from './Content/Content';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import AddProductGroup from '../../forms/AddProductGroup';
-import AddProduct from '../../forms/AddProduct';
+import AddProductGroup from '../../pages/forms/AddProductGroup';
+import AddProduct from '../../pages/forms/AddProduct';
 import ButtonBlock from './ButtonBlock';
 import ProductGroupInfo from '../../pages/ProductGroupInfo';
 

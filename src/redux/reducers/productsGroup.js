@@ -1,7 +1,8 @@
 const initialState = {
   items: [],
   isLoaded: false,
-  sortType: ''
+  isShowOnlyUsed: true,
+  sortParam: 'asc_price',
 };
 
 const productsGroup = (state = initialState, action) => {
@@ -16,7 +17,13 @@ const productsGroup = (state = initialState, action) => {
     case 'SET_SORT_BY':
       return {
         ...state,
-        sortType: action.payload,
+        sortParam: action.payload,
+      };
+
+    case 'SET_VISIBILITY_PARAM':
+      return {
+        ...state,
+        isShowOnlyUsed: action.payload,
       };
 
     case 'CLEAR_PRODUCT_GROUP':

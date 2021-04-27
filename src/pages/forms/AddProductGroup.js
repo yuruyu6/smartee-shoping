@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchProducts } from '../redux/actions/products';
-import { fetchCategories } from '../redux/actions/categories';
-import { createProductGroup } from '../redux/actions/productsGroup';
-import ProductCard from '../components/ProductCard/ProductCard';
-import useDebounce from '../hooks/useDebounce';
+import { fetchProducts } from '../../redux/actions/products';
+import { fetchCategories } from '../../redux/actions/categories';
+import { createProductGroup } from '../../redux/actions/productsGroup';
+import ProductCard from '../../components/ProductCard/ProductCard';
+import useDebounce from '../../hooks/useDebounce';
 
 export default function AddProductGroup() {
   const dispatch = useDispatch();
@@ -13,6 +13,9 @@ export default function AddProductGroup() {
     ({ categories }) => categories.categories
   );
   const isLoaded = useSelector(({ products }) => products.isLoaded);
+  const isShowOnlyUsed = useSelector(
+    ({ products }) => products.isShowOnlyUsed
+  );
 
   const [isValid, setIsValid] = useState(false);
   const [selectedProducts, setSelectedProducts] = useState([]);
@@ -142,7 +145,10 @@ export default function AddProductGroup() {
         </div>
       </div>
       <div className="mb-3">
-        <p className="text-lg">Выберите товары:</p>
+        <p className="text-lg">
+          Выберите товары (выбрано {newProductCategory?.productIds.length}
+          ):
+        </p>
         <input
           onInput={(e) => onProductTitleSearchInput(e)}
           className="inline-flex py-1.5 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"

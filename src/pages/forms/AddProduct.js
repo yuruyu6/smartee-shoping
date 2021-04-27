@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addProduct } from '../redux/actions/products';
+import { addProduct } from '../../redux/actions/products';
 
 
 export default function AddProduct() {

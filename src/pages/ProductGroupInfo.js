@@ -1,10 +1,12 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import {
   fetchProductGroupById,
+  setSortBy,
   updateProductGroupById,
 } from '../redux/actions/productsGroup';
+import { sortedProductsGroupSelector } from '../redux/selectors/productsGroupSelectors';
 import ProductGroupCard from '../components/ProductGroupCard/ProductGroupCard';
 import SortPopup from '../components/SortPopup/SortPopup';
 
@@ -19,68 +21,16 @@ const sortTypes = [
 export default function ProductGroupInfo() {
   let { params } = useParams();
   const dispatch = useDispatch();
-  const productsGroup = useSelector(
-    ({ productsGroup }) => productsGroup.items
-  );
+  const productsGroup = useSelector(sortedProductsGroupSelector);
   const isLoaded = useSelector(
     ({ productsGroup }) => productsGroup.isLoaded
   );
-  const [sortParams, setSortType] = useState(
-    sortTypes.find((i) => i.type === defaultSortType)
+  const sortParam = useSelector(
+    ({ productsGroup }) => productsGroup.sortParam
   );
 
-  const [sortedProductsGroup, setSortedProductsGroup] = useState([]);
-
-  useEffect(() => {
-    setSortedProductsGroup(productsGroup);
-  }, [productsGroup]);
-
-  const setSortedList = useCallback((sortParam = defaultSortType) => {
-    console.log('sorting!@!');
-    switch (sortParam) {
-      case 'asc_price':
-        setSortedProductsGroup({
-          ...productsGroup,
-          productIds: productsGroup.productIds?.sort((a, b) =>
-            a.salePrice.min > b.salePrice.min ? 1 : -1
-          ),
-        });
-        break;
-
-      case 'desc_rating':
-        setSortedProductsGroup({
-          ...productsGroup,
-          productIds: productsGroup.productIds?.sort((a, b) =>
-            a.averageStar < b.averageStar ? 1 : -1
-          ),
-        });
-        break;
-      case 'desc_orders':
-        setSortedProductsGroup({
-          ...productsGroup,
-          productIds: productsGroup.productIds?.sort((a, b) =>
-            a.orders < b.orders ? 1 : -1
-          ),
-        });
-        break;
-
-      default:
-        setSortedProductsGroup({
-          ...productsGroup,
-          productIds: productsGroup.productIds?.sort((a, b) =>
-            a.salePrice.min > b.salePrice.min ? 1 : -1
-          ),
-        });
-        break;
-    }
-  }, [productsGroup]);
-
-  useEffect(() => {
-    setSortedList(sortParams.type);
-  }, [sortParams]);
-
   const onSelectSortType = (sortParams = defaultSortType) => {
-    setSortType(sortTypes.find((i) => i.type === sortParams));
+    dispatch(setSortBy(sortParams));
   };
 
   const onClickUpdateButton = () => {
@@ -93,33 +43,26 @@ export default function ProductGroupInfo() {
 
   return (
     <div>
-      {isLoaded && sortedProductsGroup ? (
+      {isLoaded && productsGroup ? (
         <div>
           <div className="grid grid-cols-2 xl:grid-cols-3">
             <div className="m-auto">
-              {sortedProductsGroup.photoURL && (
+              {productsGroup.photoURL && (
                 <img
                   className="h-48"
                   src={
-                    sortedProductsGroup.photoURL +
+                    productsGroup.photoURL +
                     `_${imageSize}x${imageSize}.jpg`
                   }
-                  alt={sortedProductsGroup.title}
+                  alt={productsGroup.title}
                 />
               )}
             </div>
             <div className="flex flex-col justify-between">
               <h1 className="text-2xl font-bold opacity-75">
-                {sortedProductsGroup.title}
+                {productsGroup.title}
               </h1>
-              <div>
-                {/* <p className="text-3xl font-bold text-right mb-8 opacity-75">
-                  US $140.65
-                </p> */}
-                <button className="inline-flex text-xl w-full justify-center py-2 border border-transparent shadow font-bold rounded-md text-white bg-yellow-500 disabled:opacity-20 hover:bg-opacity-75 transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500">
-                  Купить
-                </button>
-              </div>
+             
             </div>
             <div className="hidden xl:block">
               <button
@@ -134,12 +77,14 @@ export default function ProductGroupInfo() {
             <div className="flex relative justify-end my-6">
               <SortPopup
                 items={sortTypes}
-                activeSortType={sortParams}
+                activeSortType={sortTypes.find(
+                  (i) => i.type === sortParam
+                )}
                 onClickSortType={onSelectSortType}
               />
             </div>
             <div className="border rounded">
-              {sortedProductsGroup.productIds?.map((product) => (
+              {productsGroup.productIds?.map((product) => (
                 <div
                   key={product.productId}
                   className="cursor-pointer odd:bg-gray-50"

@@ -56,6 +56,11 @@ export const updateProductGroupById = (id) => (dispatch) => {
   setTimeout(() => dispatch({ type: 'HIDE_NOTIFICATION' }), 7500);
 };
 
+export const setVisibilityParam = (isShowOnlyUsed) => ({
+  type: 'SET_VISIBILITY_PARAM',
+  payload: isShowOnlyUsed,  
+})
+
 export const setSortBy = (sortType) => ({
   type: 'SET_SORT_BY',
   payload: sortType,
