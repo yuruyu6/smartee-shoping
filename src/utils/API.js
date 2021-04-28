@@ -2,8 +2,16 @@ import axios from 'axios';
 
 axios.defaults.baseURL = 'http://localhost:5000';
 
+const getProducts = () => {
+  return axios.get('/products');
+};
+
+const getProductsWithoutCategory = () => {
+  return axios.get('/products/withoutCategory');
+};
+
 const getProductsBySearchTerm = (searchTeam) => {
-  return axios.post('/products/search', { title: searchTeam });
+  return axios.post('/products/', { title: searchTeam });
 };
 
 const addProductById = (productId) => {
@@ -32,6 +40,8 @@ const getCategories = () => {
 
 export {
   getProductsBySearchTerm,
+  getProducts,
+  getProductsWithoutCategory,
   addProductById,
   addProductGroup,
   getProductGroupByCategoryName,

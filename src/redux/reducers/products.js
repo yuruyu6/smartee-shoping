@@ -1,5 +1,6 @@
 const initialState = {
-  products: [],
+  items: [],
+  searchTerm: '',
   isLoaded: false,
   isWaitingResponce: false,
 };
@@ -9,15 +10,15 @@ const products = (state = initialState, action) => {
     case 'SET_PRODUCTS':
       return {
         ...state,
-        products: action.payload,
+        items: action.payload,
+        searchTerm: '',
         isLoaded: true,
       };
 
-    case 'ADD_PRODUCT':
+    case 'SET_PRODUCTS_SEARCH_TERM':
       return {
         ...state,
-        products: action.payload,
-        isWaitingResponce: false,
+        searchTerm: action.payload,
       };
 
     case 'SET_LOADED':
@@ -26,7 +27,7 @@ const products = (state = initialState, action) => {
         isLoaded: action.payload,
       };
 
-      case 'SET_WAITING':
+    case 'SET_WAITING':
       return {
         ...state,
         isWaitingResponce: action.payload,

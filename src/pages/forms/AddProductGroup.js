@@ -1,32 +1,27 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchProducts } from '../../redux/actions/products';
+import { fetchProducts, setProductsSearchTerm } from '../../redux/actions/products';
 import { fetchCategories } from '../../redux/actions/categories';
 import { createProductGroup } from '../../redux/actions/productsGroup';
 import ProductCard from '../../components/ProductCard/ProductCard';
-import useDebounce from '../../hooks/useDebounce';
+import { foundProductsSelector } from '../../redux/selectors/productsSelectors';
 
 export default function AddProductGroup() {
   const dispatch = useDispatch();
-  const products = useSelector(({ products }) => products.products);
+  const products = useSelector(foundProductsSelector);
   const categories = useSelector(
     ({ categories }) => categories.categories
   );
   const isLoaded = useSelector(({ products }) => products.isLoaded);
-  const isShowOnlyUsed = useSelector(
-    ({ products }) => products.isShowOnlyUsed
-  );
 
   const [isValid, setIsValid] = useState(false);
-  const [selectedProducts, setSelectedProducts] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [isShowOnlyUsed, setIsShowOnlyUsed] = useState(true);
   const [newProductCategory, setNewProductCategory] = useState({
     productIds: [],
     category: '',
     title: '',
     photoURL: '',
   });
-  const debouncedSearchTerm = useDebounce(searchTerm, 500);
 
   useEffect(() => {
     dispatch(fetchCategories());
@@ -34,12 +29,8 @@ export default function AddProductGroup() {
   }, [dispatch]);
 
   useEffect(() => {
-    setSelectedProducts(products);
-  }, [products]);
-
-  useEffect(() => {
-    dispatch(fetchProducts(debouncedSearchTerm));
-  }, [dispatch, debouncedSearchTerm]);
+      dispatch(fetchProducts(isShowOnlyUsed));
+  }, [isShowOnlyUsed])
 
   useEffect(() => {
     setIsValid(
@@ -91,13 +82,13 @@ export default function AddProductGroup() {
   };
 
   const onProductTitleSearchInput = (e) => {
-    setSearchTerm(e.target.value);
+    dispatch(setProductsSearchTerm(e.target.value));
   };
 
   const onClickSelectAll = () => {
     setNewProductCategory({
       ...newProductCategory,
-      productIds: selectedProducts.map((i) => i._id),
+      productIds: products.map((i) => i._id),
     });
   };
 
@@ -106,6 +97,10 @@ export default function AddProductGroup() {
       ...newProductCategory,
       productIds: [],
     });
+  };
+
+  const onCheckBoxShowOnlyUsed = () => {
+    setIsShowOnlyUsed(!isShowOnlyUsed);    
   };
 
   return (
@@ -118,7 +113,7 @@ export default function AddProductGroup() {
             onInput={(e) => onTitleInput(e)}
             value={newProductCategory.title}
             type="text"
-            className="block w-96 py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"
+            className="block w-96 py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500"
           />
         </div>
         <div className="flex-1">
@@ -126,7 +121,7 @@ export default function AddProductGroup() {
           {isLoaded ? (
             <select
               disabled={!isLoaded}
-              className="block w-96 text-gray-700 py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"
+              className="block w-96 text-gray-700 py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500"
               name="animals"
               onChange={(e) => onCategorySelect(e)}
               value={newProductCategory.category}
@@ -146,12 +141,13 @@ export default function AddProductGroup() {
       </div>
       <div className="mb-3">
         <p className="text-lg">
-          Выберите товары (выбрано {newProductCategory?.productIds.length}
+          Выберите товары (выбрано {newProductCategory?.productIds.length}/{products?.length}
           ):
         </p>
+
         <input
           onInput={(e) => onProductTitleSearchInput(e)}
-          className="inline-flex py-1.5 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"
+          className="inline-flex py-1.5 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500"
           type="text"
         />
         <button
@@ -165,11 +161,20 @@ export default function AddProductGroup() {
           className="inline-flex justify-center py-2 px-4 ml-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-yellow-500 disabled:opacity-20 hover:bg-opacity-75 transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
         >
           Снять все
-        </button>
+        </button>        
       </div>
+      <label className="inline-flex items-center cursor-pointer">
+          <input
+            type="checkbox"
+            className="h-5 w-5 rounded border-gray-300 text-yellow-500 focus:ring-transparent"
+            checked={isShowOnlyUsed}
+            onChange={() => onCheckBoxShowOnlyUsed()}
+          />
+          <span className="ml-2 text-gray-700">Показать только товары, которым не присвоена категория</span>
+        </label>
       {isLoaded ? (
         <div className="grid grid-cols-2 xl:grid-cols-4">
-          {selectedProducts.map((product) => (
+          {products?.map((product) => (
             <div
               className={
                 newProductCategory.productIds.includes(product._id)
