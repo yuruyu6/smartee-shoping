@@ -22,6 +22,9 @@ export default memo(function SortPopup({
 
   useEffect(() => {
     document.body.addEventListener('click', handleOutsideClick);
+    return () => {
+      setVisiblePopup({});
+    };
   }, []);
 
   const onSelectItem = (itemType) => {
@@ -33,7 +36,7 @@ export default memo(function SortPopup({
 
   return (
     <div ref={sortPopupRef}>
-      <div className="flex items-center ">        
+      <div className="flex items-center ">
         <p className="opacity-75 font-bold">Сортировать по:</p>
         <span
           className="cursor-pointer font-semibold border-b-2 mx-2 border-dashed text-yellow-500 border-yellow-500"
@@ -50,7 +53,7 @@ export default memo(function SortPopup({
           width="8"
           height="5"
           viewBox="0 0 10 6"
-          fill="none"          
+          fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path

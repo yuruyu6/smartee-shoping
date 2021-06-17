@@ -30,8 +30,12 @@ const getProductGroupById = (id) => {
   return axios.get(`/product-groups/${id}`);
 };
 
-const patchProductGroupById = (id) => {
-  return axios.patch(`/product-groups/${id}`);
+const patchProductGroup = (id, updateProductGroupDTO) => {
+  return axios.patch(`/product-groups/${id}`, updateProductGroupDTO);
+};
+
+const patchProductsByProductGroupId = (id) => {
+  return axios.patch(`/product-groups/updateGroupProducts/${id}`);
 };
 
 const getCategories = () => {
@@ -46,6 +50,7 @@ export {
   addProductGroup,
   getProductGroupByCategoryName,
   getProductGroupById,
-  patchProductGroupById,
+  patchProductGroup,
+  patchProductsByProductGroupId,
   getCategories,
 };

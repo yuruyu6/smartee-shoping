@@ -13,6 +13,7 @@ export default function ProductGroupCard({
     }).salePrice.min || '...';
 
   return (
+    <div>
     <Link
       to={'/product/' + _id}
       className="p-4 border-b border-opacity-25"
@@ -27,5 +28,9 @@ export default function ProductGroupCard({
         US ${minPrice}
       </p>
     </Link>
+    <Link to={`/addProductGroup/${_id}`}>
+      Edit    
+    </Link>
+    </div>
   );
 }

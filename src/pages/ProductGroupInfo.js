@@ -4,7 +4,7 @@ import { useParams } from 'react-router';
 import {
   fetchProductGroupById,
   setSortBy,
-  updateProductGroupById,
+  updateProductsByProductGroupId,
 } from '../redux/actions/productsGroup';
 import { sortedProductsGroupSelector } from '../redux/selectors/productsGroupSelectors';
 import ProductGroupCard from '../components/ProductGroupCard/ProductGroupCard';
@@ -19,7 +19,7 @@ const sortTypes = [
 ];
 
 export default function ProductGroupInfo() {
-  let { params } = useParams();
+  const { params } = useParams();
   const dispatch = useDispatch();
   const productsGroup = useSelector(sortedProductsGroupSelector);
   const isLoaded = useSelector(
@@ -34,7 +34,7 @@ export default function ProductGroupInfo() {
   };
 
   const onClickUpdateButton = () => {
-    dispatch(updateProductGroupById(productsGroup._id));
+    dispatch(updateProductsByProductGroupId(productsGroup._id));
   };
 
   useEffect(() => {
@@ -85,9 +85,9 @@ export default function ProductGroupInfo() {
             </div>
             <div className="border rounded">
               {productsGroup.productIds?.map((product) => (
-                <div
+                product.isActive && (<div
                   key={product.productId}
-                  className="cursor-pointer odd:bg-gray-50"
+                  className="odd:bg-gray-50"
                 >
                   <a
                     href={`https://www.aliexpress.com/item/${product.productId}.html`}
@@ -96,7 +96,7 @@ export default function ProductGroupInfo() {
                   >
                     <ProductGroupCard {...product} />
                   </a>
-                </div>
+                </div>)
               ))}
             </div>
           </div>

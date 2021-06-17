@@ -21,6 +21,10 @@ export default function MainSection() {
             <div className="px-8 py-6 bg-white rounded-md shadow">
               <Switch>
                 <Route
+                  path="/addProductGroup/:params"
+                  children={<AddProductGroup />}
+                ></Route>
+                <Route
                   path="/addProductGroup"
                   children={<AddProductGroup />}
                 ></Route>
@@ -28,7 +32,10 @@ export default function MainSection() {
                   path="/addProduct"
                   children={<AddProduct />}
                 ></Route>
-                <Route path="/product/:params" children={<ProductGroupInfo />}></Route>
+                <Route
+                  path="/product/:params"
+                  children={<ProductGroupInfo />}
+                ></Route>
                 <Route path="/:params" children={<Content />}></Route>
               </Switch>
             </div>

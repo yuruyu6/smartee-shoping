@@ -1,27 +1,32 @@
-import { getProductsWithoutCategory, addProductById, getProducts } from '../../utils/API';
+import {
+  getProductsWithoutCategory,
+  addProductById,
+  getProducts,
+} from '../../utils/API';
 
 export const setLoaded = (payload) => ({
   type: 'SET_LOADED',
   payload,
 });
 
-export const fetchProducts = (withoutCategory = true) => (dispatch) => {
-  dispatch({
-    type: 'SET_LOADED',
-    payload: false,
-  });
+export const fetchProducts =
+  (withoutCategory = false) =>
+  (dispatch) => {
+    dispatch({
+      type: 'SET_LOADED',
+      payload: false,
+    });
 
-  if (withoutCategory) {
-    getProductsWithoutCategory().then(({ data }) => {
-      dispatch(setProducts(data));
-    });
-  } else {
-    getProducts().then(({ data }) => {
-      dispatch(setProducts(data));
-    });
-  }
-  
-};
+    if (withoutCategory) {
+      getProductsWithoutCategory().then(({ data }) => {
+        dispatch(setProducts(data));
+      });
+    } else {
+      getProducts().then(({ data }) => {
+        dispatch(setProducts(data));
+      });
+    }
+  };
 
 export const addProduct = (productId) => (dispatch) => {
   dispatch({
@@ -49,7 +54,7 @@ export const setProducts = (items) => ({
   payload: items,
 });
 
-export const setProductsSearchTerm = (searchTeam) => ({  
+export const setProductsSearchTerm = (searchTeam) => ({
   type: 'SET_PRODUCTS_SEARCH_TERM',
   payload: searchTeam,
 });
