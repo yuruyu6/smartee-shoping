@@ -9,6 +9,7 @@ import {
 import { sortedProductsGroupSelector } from '../redux/selectors/productsGroupSelectors';
 import ProductGroupCard from '../components/ProductGroupCard/ProductGroupCard';
 import SortPopup from '../components/SortPopup/SortPopup';
+import Title from '../components/UI/Title';
 
 const imageSize = 350;
 const defaultSortType = 'asc_price';
@@ -59,14 +60,11 @@ export default function ProductGroupInfo() {
               )}
             </div>
             <div className="flex flex-col justify-between">
-              <h1 className="text-2xl font-bold opacity-75">
-                {productsGroup.title}
-              </h1>
-             
+              <Title text={productsGroup.title} />
             </div>
             <div className="hidden xl:block">
               <button
-                className="cursor-pointer text-gray-400 font-semibold border-b-2 border-dashed border-gray-400 focus:outline-none"
+                className="cursor-pointer text-gray-400 font-semibold border-b-2 border-dashed border-gray-400 focus:outline-black hover:bg-gray-200 transition "
                 onClick={() => onClickUpdateButton()}
               >
                 Изменилась цена?
@@ -84,20 +82,23 @@ export default function ProductGroupInfo() {
               />
             </div>
             <div className="border rounded">
-              {productsGroup.productIds?.map((product) => (
-                product.isActive && (<div
-                  key={product.productId}
-                  className="odd:bg-gray-50"
-                >
-                  <a
-                    href={`https://www.aliexpress.com/item/${product.productId}.html`}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    <ProductGroupCard {...product} />
-                  </a>
-                </div>)
-              ))}
+              {productsGroup.productIds?.map(
+                (product) =>
+                  product.isActive && (
+                    <div
+                      key={product.productId}
+                      className="odd:bg-gray-50"
+                    >
+                      <a
+                        href={`https://www.aliexpress.com/item/${product.productId}.html`}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <ProductGroupCard {...product} />
+                      </a>
+                    </div>
+                  )
+              )}
             </div>
           </div>
         </div>

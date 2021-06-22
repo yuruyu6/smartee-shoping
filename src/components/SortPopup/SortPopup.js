@@ -1,4 +1,5 @@
 import { memo, useEffect, useRef, useState } from 'react';
+import SortPopupOptions from './SortPopupOptions';
 
 export default memo(function SortPopup({
   items,
@@ -6,16 +7,20 @@ export default memo(function SortPopup({
   onClickSortType,
 }) {
   const [visiblePopup, setVisiblePopup] = useState(false);
-  const sortPopupRef = useRef();
+  const sortButtonPopupRef = useRef();
+  let arrayOfOptionsRefs = [];
 
-  const toggleVisiblePopup = () => {
+  const toggleVisiblePopup = (e) => {
+    if (visiblePopup === false) {
+      return setVisiblePopup(!visiblePopup);
+    }
     setVisiblePopup(!visiblePopup);
   };
 
   const handleOutsideClick = (event) => {
     const path =
       event.path || (event.composedPath && event.composedPath());
-    if (!path.includes(sortPopupRef.current)) {
+    if (!path.includes(sortButtonPopupRef.current)) {
       setVisiblePopup(false);
     }
   };
@@ -27,21 +32,54 @@ export default memo(function SortPopup({
     };
   }, []);
 
-  const onSelectItem = (itemType) => {
-    if (onClickSortType) {
-      onClickSortType(itemType);
+  const onSelectItem = (event, itemType, index) => {
+    switch (event.type) {
+      case 'click':
+        if (onClickSortType) {
+          onClickSortType(itemType);
+        }
+        break;
+      case 'keydown':
+        event.preventDefault();
+        if (event.key === 'Enter' || event.key === ' ') {
+          if (onClickSortType) {
+            onClickSortType(itemType);
+            setVisiblePopup(false);
+          }
+        }
+        if (event.key === 'ArrowUp') {
+          arrayOfOptionsRefs[
+            index === 0 ? arrayOfOptionsRefs.length - 1 : index - 1
+          ].focus();
+        }
+        if (event.key === 'ArrowDown') {
+          arrayOfOptionsRefs[
+            index >= arrayOfOptionsRefs.length - 1 ? 0 : index + 1
+          ].focus();
+        }
+        break;
+      default:
     }
-    setVisiblePopup(false);
+  };
+
+  const setOptionRef = (element) => {
+    if (element !== null) {
+      arrayOfOptionsRefs.push(element);
+      arrayOfOptionsRefs[items.indexOf(activeSortType)]?.focus();
+    }
   };
 
   return (
-    <div ref={sortPopupRef}>
-      <div className="flex items-center ">
-        <p className="opacity-75 font-bold">Сортировать по:</p>
-        <span
-          className="cursor-pointer font-semibold border-b-2 mx-2 border-dashed text-yellow-500 border-yellow-500"
-          onClick={() => toggleVisiblePopup()}
-        >
+    <div>
+      <button
+        tabIndex="0"
+        ref={sortButtonPopupRef}
+        className="flex items-center focus:outline-black"
+        onClick={(e) => toggleVisiblePopup(e)}
+        aria-haspopup="listbox"
+      >
+        <span className="opacity-75 font-bold">Сортировать по:</span>
+        <span className="cursor-pointer font-semibold border-b-2 mx-2 border-dashed text-yellow-500 border-yellow-500">
           {activeSortType.name}
         </span>
         <svg
@@ -61,25 +99,15 @@ export default memo(function SortPopup({
             fill="#2C2C2C"
           />
         </svg>
-      </div>
+      </button>
       {visiblePopup && (
         <div className="overflow-hidden absolute right-0 py-2 shadow rounded bg-white z-10 w-48 ">
-          <ul>
-            {items &&
-              items.map((i) => (
-                <li
-                  key={i.type}
-                  onClick={() => onSelectItem(i.type)}
-                  className={
-                    i.type === activeSortType.type
-                      ? 'p-3 hover:bg-gray-200 transition cursor-pointer font-bold text-yellow-500'
-                      : 'p-3 hover:bg-gray-200 transition cursor-pointer'
-                  }
-                >
-                  {i.name}
-                </li>
-              ))}
-          </ul>
+          <SortPopupOptions
+            items={items}
+            activeSortType={activeSortType}
+            onSelectItem={onSelectItem}
+            setOptionRef={setOptionRef}
+          />
         </div>
       )}
     </div>

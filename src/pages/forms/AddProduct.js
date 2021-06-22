@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import Title from '../../components/UI/Title';
 import { addProduct } from '../../redux/actions/products';
 
 
@@ -29,7 +30,9 @@ export default function AddProduct() {
 
   return (
     <div>
-      <h1 className="text-3xl font-bold mb-3">Добавление товара</h1>
+      <Title
+        text="Добавление товара"
+      />
       <div className="mb-4">
         <div className="flex-1">
           <p className="text-lg">Ссылка на товар:</p>

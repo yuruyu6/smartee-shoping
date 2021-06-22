@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { fetchProductGroupByCategory } from '../../../redux/actions/productsGroup';
 import ProductGroupCard from '../../ProductCard/ProductGroupCard';
 import ProductCardSkeleton from '../../ProductCard/ProductCardSkeleton';
+import DataNotFound from '../../UI/DataNotFound';
 
 export default function Content() {
   const dispatch = useDispatch();
@@ -19,19 +20,23 @@ export default function Content() {
 
   return (
     <div>
-      {isLoaded && products.length ? (
-        <div>
-          <h1 className="text-3xl font-bold">
-            {products[0].category.title}
-          </h1>
-          <div className="grid grid-cols-2 xl:grid-cols-4">
-            {products.map((product) => (
-              <div key={product._id}>
-                <ProductGroupCard {...product} />
-              </div>
-            ))}
+      {isLoaded ? (
+        products.length > 0 ? (
+          <div>
+            <h1 className="text-3xl font-bold">
+              {products[0].category.title}
+            </h1>
+            <div className="grid grid-cols-2 xl:grid-cols-4">
+              {products.map((product) => (
+                <div key={product._id}>
+                  <ProductGroupCard {...product} />
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
+        ) : (
+          <DataNotFound />
+        )
       ) : (
         <div className="grid grid-cols-2 xl:grid-cols-4">
           {Array(8)

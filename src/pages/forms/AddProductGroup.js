@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import Loader from '../../components/UI/Loader';
+import Title from '../../components/UI/Title';
 import {
   fetchProducts,
   setProductsSearchTerm,
@@ -48,10 +49,10 @@ export default function AddProductGroup() {
     if (isEditorMode && currentProductCategory) {
       setNewProductCategory({
         productIds:
-          currentProductCategory?.productIds?.map((i) => i._id) || [],
-        category: currentProductCategory?.category,
-        title: currentProductCategory?.title || '',
-        photoURL: currentProductCategory?.photoURL,
+          currentProductCategory.productIds?.map((i) => i._id) || [],
+        category: currentProductCategory.category,
+        title: currentProductCategory.title || '',
+        photoURL: currentProductCategory.photoURL,
       });
     }
   }, [isEditorMode, currentProductCategory]);
@@ -142,9 +143,11 @@ export default function AddProductGroup() {
 
   return (
     <div>
-      <h1 className="text-3xl font-bold mb-3">
-        {isEditorMode ? 'Редактирование товара' : 'Создание нового товара'}
-      </h1>
+      <Title
+        text={
+          isEditorMode ? 'Редактирование товара' : 'Создание нового товара'
+        }
+      />
       <div className="block xl:flex mb-4">
         <div className="flex-1">
           <p className="text-lg">Название:</p>
@@ -174,7 +177,7 @@ export default function AddProductGroup() {
               ))
             </select>
           ) : (
-            <p>Выполяется загрузка...</p>
+            <Loader />
           )}
         </div>
       </div>
@@ -214,7 +217,7 @@ export default function AddProductGroup() {
           Показать только товары, которым не присвоена категория
         </span>
       </label>
-      {!isLoaded ? (
+      {isLoaded ? (
         <div className="grid grid-cols-2 xl:grid-cols-4">
           {products?.map((product) => (
             <div
