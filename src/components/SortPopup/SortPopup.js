@@ -45,6 +45,8 @@ export default memo(function SortPopup({
           if (onClickSortType) {
             onClickSortType(itemType);
             setVisiblePopup(false);
+            sortButtonPopupRef.current &&
+              sortButtonPopupRef.current.focus();
           }
         }
         if (event.key === 'ArrowUp') {
