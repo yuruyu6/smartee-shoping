@@ -12,7 +12,7 @@ export default function Header() {
           <div className="flex-none px-2 md:px-16">
             <Logo />
           </div>
-          <div className="flex-auto pl-8">
+          <div className="flex-auto p-3 md:pl-8">
             <Search />
           </div>
           <div className="hidden md:block flex-none px-6">

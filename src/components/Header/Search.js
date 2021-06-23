@@ -4,6 +4,7 @@ export default function Search() {
       <div className="relative text-gray-600">
         <span className="absolute inset-y-0 left-0 flex items-center pl-2">
           <button
+            aria-label="Search"
             type="submit"
             className="p-1 focus:outline-none focus:shadow-outline"
           >

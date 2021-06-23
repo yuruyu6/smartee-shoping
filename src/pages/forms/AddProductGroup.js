@@ -181,11 +181,11 @@ export default function AddProductGroup() {
           )}
         </div>
       </div>
-      <div className="mb-3">
-        <p className="text-lg">
+      <div className="flex flex-col md:items-center md:flex-row mb-3">
+        <p className="text-lg md:mr-1">
           Выберите товары (выбрано {newProductCategory?.productIds.length}/
           {products?.length}
-          ):
+          ): 
         </p>
 
         <input
@@ -195,13 +195,13 @@ export default function AddProductGroup() {
         />
         <button
           onClick={() => onClickSelectAll()}
-          className="inline-flex justify-center py-2 px-4 ml-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-yellow-500 disabled:opacity-20 hover:bg-opacity-75 transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
+          className="inline-flex justify-center py-2 px-4 ml-0 my-1 md:my-0 md:ml-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-yellow-500 disabled:opacity-20 hover:bg-opacity-75 transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
         >
           Выбрать все
         </button>
         <button
           onClick={() => onClickUnselectAll()}
-          className="inline-flex justify-center py-2 px-4 ml-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-yellow-500 disabled:opacity-20 hover:bg-opacity-75 transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
+          className="inline-flex justify-center py-2 px-4 ml-0 md:ml-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-yellow-500 disabled:opacity-20 hover:bg-opacity-75 transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
         >
           Снять все
         </button>
