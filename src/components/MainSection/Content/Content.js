@@ -1,7 +1,10 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { fetchProductGroupByCategory } from '../../../redux/actions/productsGroup';
+import {
+  fetchProductGroupByCategory,
+  removeProductGroup,
+} from '../../../redux/actions/productsGroup';
 import ProductGroupCard from '../../ProductCard/ProductGroupCard';
 import ProductCardSkeleton from '../../ProductCard/ProductCardSkeleton';
 import DataNotFound from '../../UI/DataNotFound';
@@ -17,6 +20,10 @@ export default function Content() {
     dispatch(fetchProductGroupByCategory(params));
   }, [params, dispatch]);
 
+  const onDeleteProductGroup = (id) => {
+    dispatch(removeProductGroup(id));
+  };
+
   return (
     <div>
       {isLoaded ? (
@@ -26,7 +33,10 @@ export default function Content() {
             <div className="grid grid-cols-2 xl:grid-cols-4">
               {products.map((product) => (
                 <div key={product._id}>
-                  <ProductGroupCard {...product} />
+                  <ProductGroupCard
+                    {...product}
+                    deleteProductGroup={onDeleteProductGroup}
+                  />
                 </div>
               ))}
             </div>

@@ -1,5 +1,6 @@
 import {
   addProductGroup,
+  deleteProductGroupById,
   getProductGroupByCategoryName,
   getProductGroupById,
   patchProductGroup,
@@ -21,6 +22,17 @@ export const updateProductGroup = (id, updateProductGroupDTO) => (dispatch) => {
       dispatch(
         setProductGroupSuccessResponse('Новая группа успешно обновлена')
       ),
+    (error) => dispatch(setProductGroupFailureResponse(error.message))
+  );
+  setTimeout(() => dispatch({ type: 'HIDE_NOTIFICATION' }), 7500);
+};
+
+export const removeProductGroup = (id) => (dispatch) => {
+  deleteProductGroupById(id).then(
+    () => {
+      dispatch(setProductGroupSuccessResponse('Запись успешно удалена'));
+      dispatch(fetchProductGroupById(id));
+    },
     (error) => dispatch(setProductGroupFailureResponse(error.message))
   );
   setTimeout(() => dispatch({ type: 'HIDE_NOTIFICATION' }), 7500);

@@ -34,6 +34,10 @@ const patchProductGroup = (id, updateProductGroupDTO) => {
   return axios.patch(`/product-groups/${id}`, updateProductGroupDTO);
 };
 
+const deleteProductGroupById = (id) => {
+  return axios.delete(`/product-groups/${id}`);
+};
+
 const patchProductsByProductGroupId = (id) => {
   return axios.patch(`/product-groups/updateGroupProducts/${id}`);
 };
@@ -51,6 +55,7 @@ export {
   getProductGroupByCategoryName,
   getProductGroupById,
   patchProductGroup,
+  deleteProductGroupById,
   patchProductsByProductGroupId,
   getCategories,
 };
