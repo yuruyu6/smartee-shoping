@@ -6,41 +6,36 @@ import {
   patchProductsByProductGroupId,
 } from '../../utils/API';
 
-export const createProductGroup =
-  (createProductGroupDTO) => (dispatch) => {
-    addProductGroup(createProductGroupDTO).then(
-      () =>
-        dispatch(
-          setProductGroupSuccessResponse('Новая группа успешно создана')
-        ),
-      (error) => dispatch(setProductGroupFailureResponse(error.message))
-    );
-    setTimeout(() => dispatch({ type: 'HIDE_NOTIFICATION' }), 7500);
-  };
+export const createProductGroup = (createProductGroupDTO) => (dispatch) => {
+  addProductGroup(createProductGroupDTO).then(
+    () =>
+      dispatch(setProductGroupSuccessResponse('Новая группа успешно создана')),
+    (error) => dispatch(setProductGroupFailureResponse(error.message))
+  );
+  setTimeout(() => dispatch({ type: 'HIDE_NOTIFICATION' }), 7500);
+};
 
-export const updateProductGroup =
-  (id, updateProductGroupDTO) => (dispatch) => {
-    patchProductGroup(id, updateProductGroupDTO).then(
-      () =>
-        dispatch(
-          setProductGroupSuccessResponse('Новая группа успешно обновлена')
-        ),
-      (error) => dispatch(setProductGroupFailureResponse(error.message))
-    );
-    setTimeout(() => dispatch({ type: 'HIDE_NOTIFICATION' }), 7500);
-  };
+export const updateProductGroup = (id, updateProductGroupDTO) => (dispatch) => {
+  patchProductGroup(id, updateProductGroupDTO).then(
+    () =>
+      dispatch(
+        setProductGroupSuccessResponse('Новая группа успешно обновлена')
+      ),
+    (error) => dispatch(setProductGroupFailureResponse(error.message))
+  );
+  setTimeout(() => dispatch({ type: 'HIDE_NOTIFICATION' }), 7500);
+};
 
-export const fetchProductGroupByCategory =
-  (categoryName) => (dispatch) => {
-    dispatch({
-      type: 'CLEAR_PRODUCT_GROUP',
-      payload: false,
-    });
+export const fetchProductGroupByCategory = (categoryName) => (dispatch) => {
+  dispatch({
+    type: 'CLEAR_PRODUCT_GROUP',
+    payload: false,
+  });
 
-    getProductGroupByCategoryName(categoryName).then(({ data }) =>
-      dispatch(setProductGroup(data))
-    );
-  };
+  getProductGroupByCategoryName(categoryName).then(({ data }) =>
+    dispatch(setProductGroup(data))
+  );
+};
 
 export const fetchProductGroupById = (id) => (dispatch) => {
   dispatch({
@@ -48,9 +43,7 @@ export const fetchProductGroupById = (id) => (dispatch) => {
     payload: false,
   });
 
-  getProductGroupById(id).then(({ data }) =>
-    dispatch(setProductGroup(data))
-  );
+  getProductGroupById(id).then(({ data }) => dispatch(setProductGroup(data)));
 };
 
 export const updateProductsByProductGroupId = (id) => (dispatch) => {

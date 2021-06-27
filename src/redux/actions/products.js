@@ -36,8 +36,7 @@ export const addProduct = (productId) => (dispatch) => {
 
   addProductById(productId)
     .then(
-      () =>
-        dispatch(setAddProductSuccessResponse('Товар успешно добавлен')),
+      () => dispatch(setAddProductSuccessResponse('Товар успешно добавлен')),
       (error) => dispatch(setAddProductFailureResponse(error.message))
     )
     .finally(() => {

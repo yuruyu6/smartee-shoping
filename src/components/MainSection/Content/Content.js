@@ -9,9 +9,7 @@ import DataNotFound from '../../UI/DataNotFound';
 export default function Content() {
   const dispatch = useDispatch();
   const products = useSelector(({ productsGroup }) => productsGroup.items);
-  const isLoaded = useSelector(
-    ({ productsGroup }) => productsGroup.isLoaded
-  );
+  const isLoaded = useSelector(({ productsGroup }) => productsGroup.isLoaded);
   const { params } = useParams();
 
   useEffect(() => {
@@ -23,9 +21,7 @@ export default function Content() {
       {isLoaded ? (
         products.length > 0 ? (
           <div>
-            <h1 className="text-3xl font-bold">
-              {products[0].category.title}
-            </h1>
+            <h1 className="text-3xl font-bold">{products[0].category.title}</h1>
             <div className="grid grid-cols-2 xl:grid-cols-4">
               {products.map((product) => (
                 <div key={product._id}>

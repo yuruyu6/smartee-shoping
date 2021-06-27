@@ -35,9 +35,7 @@ export const sortedProductsGroupSelector = createSelector(
       case 'desc_orders':
         return {
           ...items,
-          productIds: items.productIds?.sort(
-            (a, b) => b.orders - a.orders
-          ),
+          productIds: items.productIds?.sort((a, b) => b.orders - a.orders),
         };
 
       default:

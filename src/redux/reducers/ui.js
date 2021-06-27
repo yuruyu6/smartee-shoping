@@ -1,7 +1,7 @@
 const initialState = {
-    notificationMessage: '',
-    notificationType: 'success',
-  };
+  notificationMessage: '',
+  notificationType: 'success',
+};
 
 const ui = (state = initialState, action) => {
   switch (action.type) {

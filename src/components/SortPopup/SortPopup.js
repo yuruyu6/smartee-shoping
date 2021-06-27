@@ -18,8 +18,7 @@ export default memo(function SortPopup({
   };
 
   const handleOutsideClick = (event) => {
-    const path =
-      event.path || (event.composedPath && event.composedPath());
+    const path = event.path || (event.composedPath && event.composedPath());
     if (!path.includes(sortButtonPopupRef.current)) {
       setVisiblePopup(false);
     }
@@ -45,8 +44,7 @@ export default memo(function SortPopup({
           if (onClickSortType) {
             onClickSortType(itemType);
             setVisiblePopup(false);
-            sortButtonPopupRef.current &&
-              sortButtonPopupRef.current.focus();
+            sortButtonPopupRef.current && sortButtonPopupRef.current.focus();
           }
         }
         if (event.key === 'ArrowUp') {
@@ -86,9 +84,7 @@ export default memo(function SortPopup({
         </span>
         <svg
           className={
-            !visiblePopup
-              ? 'transform rotate-180 opacity-30'
-              : 'opacity-30'
+            !visiblePopup ? 'transform rotate-180 opacity-30' : 'opacity-30'
           }
           width="8"
           height="5"

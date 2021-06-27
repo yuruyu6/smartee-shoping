@@ -23,12 +23,8 @@ export default function ProductGroupInfo() {
   const { params } = useParams();
   const dispatch = useDispatch();
   const productsGroup = useSelector(sortedProductsGroupSelector);
-  const isLoaded = useSelector(
-    ({ productsGroup }) => productsGroup.isLoaded
-  );
-  const sortParam = useSelector(
-    ({ productsGroup }) => productsGroup.sortParam
-  );
+  const isLoaded = useSelector(({ productsGroup }) => productsGroup.isLoaded);
+  const sortParam = useSelector(({ productsGroup }) => productsGroup.sortParam);
 
   const onSelectSortType = (sortParams = defaultSortType) => {
     dispatch(setSortBy(sortParams));
@@ -46,23 +42,22 @@ export default function ProductGroupInfo() {
     <div>
       {isLoaded && productsGroup ? (
         <div>
-          <div className="grid grid-cols-2 xl:grid-cols-3">
+          <div className="grid grid-cols-1 md:grid-cols-3">
             <div className="m-auto">
               {productsGroup.photoURL && (
                 <img
-                  className="h-48"
+                  className="h-48 w-48"
                   src={
-                    productsGroup.photoURL +
-                    `_${imageSize}x${imageSize}.jpg`
+                    productsGroup.photoURL + `_${imageSize}x${imageSize}.jpg`
                   }
                   alt={productsGroup.title}
                 />
               )}
             </div>
-            <div className="flex flex-col justify-between">
+            <div className="flex flex-col justify-between mt-4 md:m-0">
               <Title text={productsGroup.title} />
             </div>
-            <div className="hidden xl:block">
+            <div className="hidden md:block">
               <button
                 className="cursor-pointer text-gray-400 font-semibold border-b-2 border-dashed border-gray-400 focus:outline-black hover:bg-gray-200 transition "
                 onClick={() => onClickUpdateButton()}
@@ -75,9 +70,7 @@ export default function ProductGroupInfo() {
             <div className="flex relative justify-end my-6">
               <SortPopup
                 items={sortTypes}
-                activeSortType={sortTypes.find(
-                  (i) => i.type === sortParam
-                )}
+                activeSortType={sortTypes.find((i) => i.type === sortParam)}
                 onClickSortType={onSelectSortType}
               />
             </div>
@@ -85,10 +78,7 @@ export default function ProductGroupInfo() {
               {productsGroup.productIds?.map(
                 (product) =>
                   product.isActive && (
-                    <div
-                      key={product.productId}
-                      className="odd:bg-gray-50"
-                    >
+                    <div key={product.productId} className="odd:bg-gray-50">
                       <a
                         href={`https://www.aliexpress.com/item/${product.productId}.html`}
                         target="_blank"

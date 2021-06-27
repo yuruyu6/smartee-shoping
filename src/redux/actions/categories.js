@@ -1,4 +1,4 @@
-import { getCategories } from "../../utils/API";
+import { getCategories } from '../../utils/API';
 
 export const setLoaded = (payload) => ({
   type: 'SET_LOADED',

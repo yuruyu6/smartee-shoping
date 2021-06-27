@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
-export default function SideMenu() {
+export default function MenuList() {
   return (
     <ul className="justify-center align-middle">
       <li className="h-10 px-5 hover:bg-gray-100 group mb-2">

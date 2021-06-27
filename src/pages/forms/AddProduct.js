@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import Title from '../../components/UI/Title';
 import { addProduct } from '../../redux/actions/products';
 
-
 export default function AddProduct() {
   const dispatch = useDispatch();
   const isWaitingResponce = useSelector(
@@ -30,9 +29,7 @@ export default function AddProduct() {
 
   return (
     <div>
-      <Title
-        text="Добавление товара"
-      />
+      <Title text="Добавление товара" />
       <div className="mb-4">
         <div className="flex-1">
           <p className="text-lg">Ссылка на товар:</p>

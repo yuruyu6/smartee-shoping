@@ -9,7 +9,7 @@ const rootReducer = combineReducers({
   productsGroup,
   products,
   categories,
-  ui
+  ui,
 });
 
 export default rootReducer;

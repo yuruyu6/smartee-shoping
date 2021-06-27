@@ -1,9 +1,7 @@
 import { useSelector } from 'react-redux';
 
 export default function Notification() {
-  const notificationMessage = useSelector(
-    ({ ui }) => ui.notificationMessage
-  );
+  const notificationMessage = useSelector(({ ui }) => ui.notificationMessage);
 
   const notificationType = useSelector(({ ui }) => ui.notificationType);
 

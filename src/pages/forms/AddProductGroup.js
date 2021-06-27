@@ -20,9 +20,7 @@ export default function AddProductGroup() {
   const { params } = useParams();
   const dispatch = useDispatch();
   const products = useSelector(foundProductsSelector);
-  const categories = useSelector(
-    ({ categories }) => categories.categories
-  );
+  const categories = useSelector(({ categories }) => categories.categories);
   const currentProductCategory = useSelector(
     ({ productsGroup }) => productsGroup.items
   );
@@ -48,8 +46,7 @@ export default function AddProductGroup() {
   useEffect(() => {
     if (isEditorMode && currentProductCategory) {
       setNewProductCategory({
-        productIds:
-          currentProductCategory.productIds?.map((i) => i._id) || [],
+        productIds: currentProductCategory.productIds?.map((i) => i._id) || [],
         category: currentProductCategory.category,
         title: currentProductCategory.title || '',
         photoURL: currentProductCategory.photoURL,
@@ -76,9 +73,7 @@ export default function AddProductGroup() {
       ? setNewProductCategory({
           ...newProductCategory,
           productIds: [
-            ...newProductCategory.productIds.filter(
-              (i) => i !== productId
-            ),
+            ...newProductCategory.productIds.filter((i) => i !== productId),
           ],
           photoURL: products.find((i) => i._id === productId)?.images[0],
         })
@@ -104,10 +99,7 @@ export default function AddProductGroup() {
   const onClickSubmit = () => {
     isEditorMode
       ? dispatch(
-          updateProductGroup(
-            currentProductCategory._id,
-            newProductCategory
-          )
+          updateProductGroup(currentProductCategory._id, newProductCategory)
         )
       : dispatch(createProductGroup(newProductCategory));
 
@@ -144,9 +136,7 @@ export default function AddProductGroup() {
   return (
     <div>
       <Title
-        text={
-          isEditorMode ? 'Редактирование товара' : 'Создание нового товара'
-        }
+        text={isEditorMode ? 'Редактирование товара' : 'Создание нового товара'}
       />
       <div className="block xl:flex mb-4">
         <div className="flex-1">
@@ -185,7 +175,7 @@ export default function AddProductGroup() {
         <p className="text-lg md:mr-1">
           Выберите товары (выбрано {newProductCategory?.productIds.length}/
           {products?.length}
-          ): 
+          ):
         </p>
 
         <input
