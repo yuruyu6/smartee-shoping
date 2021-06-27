@@ -9,7 +9,7 @@ import ProductGroupInfo from '../../pages/ProductGroupInfo';
 export default function MainSection() {
   return (
     <div className="container mx-auto mt-5">
-      <div className="grid grid-cols-1 lg:grid-cols-layout gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-layout gap-0 sm:gap-4">
         <div>
           <div className="py-6 bg-white rounded-md shadow hidden sm:block">
             <MenuList />

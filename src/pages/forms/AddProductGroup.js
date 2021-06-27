@@ -145,7 +145,7 @@ export default function AddProductGroup() {
             onInput={(e) => onTitleInput(e)}
             value={newProductCategory.title}
             type="text"
-            className="block w-96 py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500"
+            className="block w-full md:w-96 py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500"
           />
         </div>
         <div className="flex-1">
@@ -153,8 +153,8 @@ export default function AddProductGroup() {
           {isLoaded ? (
             <select
               disabled={!isLoaded}
-              className="block w-96 text-gray-700 py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500"
-              name="animals"
+              className="block w-full md:w-96 text-gray-700 py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500"
+              name="category"
               onChange={(e) => onCategorySelect(e)}
               value={newProductCategory.category}
             >
@@ -184,12 +184,14 @@ export default function AddProductGroup() {
           type="text"
         />
         <button
+          disabled={!products?.length}
           onClick={() => onClickSelectAll()}
           className="inline-flex justify-center py-2 px-4 ml-0 my-1 md:my-0 md:ml-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-yellow-500 disabled:opacity-20 hover:bg-opacity-75 transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
         >
           Выбрать все
         </button>
         <button
+          disabled={!products?.length}
           onClick={() => onClickUnselectAll()}
           className="inline-flex justify-center py-2 px-4 ml-0 md:ml-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-yellow-500 disabled:opacity-20 hover:bg-opacity-75 transition focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
         >
