@@ -5,6 +5,7 @@ import { fetchProductGroupByCategory } from '../../../redux/actions/productsGrou
 import ProductGroupCard from '../../ProductCard/ProductGroupCard';
 import ProductCardSkeleton from '../../ProductCard/ProductCardSkeleton';
 import DataNotFound from '../../UI/DataNotFound';
+import Title from '../../UI/Title';
 
 export default function Content() {
   const dispatch = useDispatch();
@@ -21,7 +22,7 @@ export default function Content() {
       {isLoaded ? (
         products.length > 0 ? (
           <div>
-            <h1 className="text-3xl font-bold">{products[0].category.title}</h1>
+            <Title text={products[0].category.title} />
             <div className="grid grid-cols-2 xl:grid-cols-4">
               {products.map((product) => (
                 <div key={product._id}>
