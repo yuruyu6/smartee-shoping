@@ -7,7 +7,7 @@ export default memo(function SortPopupOptions({
   setOptionRef,
 }) {
   return (
-    <ul tabIndex="0">
+    <ul tabIndex="0" data-testid="sortPopupOptions">
       {items &&
         items.map((item, index) => (
           <li

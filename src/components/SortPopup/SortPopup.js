@@ -10,7 +10,7 @@ export default memo(function SortPopup({
   const sortButtonPopupRef = useRef();
   let arrayOfOptionsRefs = [];
 
-  const toggleVisiblePopup = (e) => {
+  const toggleVisiblePopup = () => {
     if (visiblePopup === false) {
       return setVisiblePopup(!visiblePopup);
     }
