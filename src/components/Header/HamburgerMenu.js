@@ -62,7 +62,7 @@ export default memo(function HamburgerMenu() {
       </div>
       {isOpen && (
         <div className="bg-gray-100 sm:hidden absolute h-screen w-full rounded z-40 top-0 py-6 left-0 shadow-inner">
-          <div className="h-full overflow-auto py-8">
+          <div className="h-full overflow-auto overscroll-contain py-8">
             <MenuList />
           </div>
         </div>

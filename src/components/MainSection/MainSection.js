@@ -2,9 +2,10 @@ import { Route, Switch } from 'react-router-dom';
 import MenuList from './MenuList';
 import AddProductGroup from '../../pages/forms/AddProductGroup';
 import AddProduct from '../../pages/forms/AddProduct';
-import ButtonBlock from './ButtonBlock';
-import Content from './Content/Content';
+import ButtonBlock from './ButtonsBlock';
+import Content from './ContentBlock';
 import ProductGroupInfo from '../../pages/ProductGroupInfo';
+import MainContentBlock from './MainContentBlock';
 
 export default function MainSection() {
   return (
@@ -33,6 +34,7 @@ export default function MainSection() {
                 children={<ProductGroupInfo />}
               ></Route>
               <Route path="/:params" children={<Content />}></Route>
+              <Route path="/" children={<MainContentBlock />}></Route>
             </Switch>
           </section>
         </div>

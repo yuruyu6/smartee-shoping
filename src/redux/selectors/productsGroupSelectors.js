@@ -32,6 +32,7 @@ export const sortedProductsGroupSelector = createSelector(
             }
           }),
         };
+
       case 'desc_orders':
         return {
           ...items,
