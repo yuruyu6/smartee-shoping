@@ -3,6 +3,7 @@ import {
   addProductById,
   getProducts,
 } from '../../utils/API';
+import { enqueueNotification } from './notifications';
 
 export const setLoaded = (payload) => ({
   type: 'SET_LOADED',
@@ -36,15 +37,14 @@ export const addProduct = (productId) => (dispatch) => {
 
   addProductById(productId)
     .then(
-      () => dispatch(setAddProductSuccessResponse('Товар успешно добавлен')),
-      (error) => dispatch(setAddProductFailureResponse(error.message))
+      () => dispatch(enqueueNotification('Товар успешно добавлен', 'success')),
+      (error) => dispatch(enqueueNotification(error.message, 'error'))
     )
     .finally(() => {
       dispatch({
         type: 'SET_WAITING',
         payload: false,
       });
-      setTimeout(() => dispatch({ type: 'HIDE_NOTIFICATION' }), 7500);
     });
 };
 
@@ -56,14 +56,4 @@ export const setProducts = (items) => ({
 export const setProductsSearchTerm = (searchTeam) => ({
   type: 'SET_PRODUCTS_SEARCH_TERM',
   payload: searchTeam,
-});
-
-export const setAddProductSuccessResponse = (response) => ({
-  type: 'SHOW_SUCCESS_NOTIFICATION',
-  payload: response,
-});
-
-export const setAddProductFailureResponse = (response) => ({
-  type: 'SHOW_DANGER_NOTIFICATION',
-  payload: response,
 });

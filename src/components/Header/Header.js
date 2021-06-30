@@ -2,7 +2,7 @@ import React from 'react';
 import Logo from './Logo';
 import Search from './Search';
 import Offers from './Offers';
-import Notification from './Notification';
+import Notification from './Notifications';
 import HamburgerMenu from './HamburgerMenu';
 
 export default function Header() {

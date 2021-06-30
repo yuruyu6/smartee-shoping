@@ -21,7 +21,7 @@ export default function Content() {
   }, [params, dispatch]);
 
   const onDeleteProductGroup = (id) => {
-    dispatch(removeProductGroup(id));
+    dispatch(removeProductGroup(id, params));
   };
 
   return (

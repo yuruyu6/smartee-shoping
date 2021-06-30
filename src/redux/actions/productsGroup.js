@@ -6,36 +6,34 @@ import {
   patchProductGroup,
   patchProductsByProductGroupId,
 } from '../../utils/API';
+import { enqueueNotification } from './notifications';
 
 export const createProductGroup = (createProductGroupDTO) => (dispatch) => {
   addProductGroup(createProductGroupDTO).then(
     () =>
-      dispatch(setProductGroupSuccessResponse('Новая группа успешно создана')),
-    (error) => dispatch(setProductGroupFailureResponse(error.message))
+      dispatch(enqueueNotification('Новая группа успешно создана', 'success')),
+    (error) => dispatch(enqueueNotification(error.message, 'error'))
   );
-  setTimeout(() => dispatch({ type: 'HIDE_NOTIFICATION' }), 7500);
 };
 
 export const updateProductGroup = (id, updateProductGroupDTO) => (dispatch) => {
   patchProductGroup(id, updateProductGroupDTO).then(
     () =>
       dispatch(
-        setProductGroupSuccessResponse('Новая группа успешно обновлена')
+        enqueueNotification('Новая группа успешно обновлена', 'success')
       ),
-    (error) => dispatch(setProductGroupFailureResponse(error.message))
+    (error) => dispatch(enqueueNotification(error.message, 'error'))
   );
-  setTimeout(() => dispatch({ type: 'HIDE_NOTIFICATION' }), 7500);
 };
 
-export const removeProductGroup = (id) => (dispatch) => {
+export const removeProductGroup = (id, currentCategory) => (dispatch) => {
   deleteProductGroupById(id).then(
     () => {
-      dispatch(setProductGroupSuccessResponse('Запись успешно удалена'));
-      dispatch(fetchProductGroupById(id));
+      dispatch(enqueueNotification('Запись успешно удалена', 'success'));
+      dispatch(fetchProductGroupByCategory(currentCategory));
     },
-    (error) => dispatch(setProductGroupFailureResponse(error.message))
+    (error) => dispatch(enqueueNotification(error.message, 'error'))
   );
-  setTimeout(() => dispatch({ type: 'HIDE_NOTIFICATION' }), 7500);
 };
 
 export const fetchProductGroupByCategory = (categoryName) => (dispatch) => {
@@ -60,16 +58,14 @@ export const fetchProductGroupById = (id) => (dispatch) => {
 
 export const updateProductsByProductGroupId = (id) => (dispatch) => {
   dispatch(
-    setProductGroupSuccessResponse('Запрос на обновление успешно создан')
+    enqueueNotification('Запрос на обновление успешно создан', 'success')
   );
 
   patchProductsByProductGroupId(id).then(
     () => '',
     (error) =>
-      dispatch(setProductGroupFailureResponse(error.response.data.message))
+      dispatch(enqueueNotification(error.response.data.message, 'error'))
   );
-
-  setTimeout(() => dispatch({ type: 'HIDE_NOTIFICATION' }), 7500);
 };
 
 export const setSortBy = (sortType) => ({
@@ -80,14 +76,4 @@ export const setSortBy = (sortType) => ({
 export const setProductGroup = (data) => ({
   type: 'SET_PRODUCT_GROUP',
   payload: data,
-});
-
-export const setProductGroupSuccessResponse = (response) => ({
-  type: 'SHOW_SUCCESS_NOTIFICATION',
-  payload: response,
-});
-
-export const setProductGroupFailureResponse = (response) => ({
-  type: 'SHOW_DANGER_NOTIFICATION',
-  payload: response,
 });

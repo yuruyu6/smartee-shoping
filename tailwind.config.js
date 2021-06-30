@@ -21,7 +21,7 @@ module.exports = {
         layout: '300px minmax(0, 1fr)',
       },
       animation: {
-        'spin-slow': 'flash 1s linear',
+        'fade-in': 'fadeIn 0.3s linear',
       },
     },
   },
