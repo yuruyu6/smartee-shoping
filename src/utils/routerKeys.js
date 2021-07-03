@@ -1,9 +1,13 @@
+const ADD_PRODUCT_GROUP_ROUTE = 'addProductGroup';
+const ADD_PRODUCT_ROUTE = 'addProduct';
+const PRODUCT_ROUTE = 'product';
+
 export const ROUTER_KEY = {
-  ADD_PRODUCT_GROUP_EDIT: '/addProductGroup/:params',
-  ADD_PRODUCT_GROUP: '/addProductGroup',
-  ADD_PRODUCT: '/addProduct',
-  PRODUCT_GROUP_INFO: '/product/:params',
-  PRODUCT_GROUP: '/product',
+  ADD_PRODUCT_GROUP_EDIT: `/${ADD_PRODUCT_GROUP_ROUTE}/:params`,
+  ADD_PRODUCT_GROUP: `/${ADD_PRODUCT_GROUP_ROUTE}`,
+  ADD_PRODUCT: `/${ADD_PRODUCT_ROUTE}`,
+  PRODUCT_GROUP_INFO: `/${PRODUCT_ROUTE}/:params`,
+  PRODUCT_GROUP: `/${PRODUCT_ROUTE}`,
   PRODUCT_GROUPS_BY_CATEGORY: '/:params',
   MAIN_PAGE: '/',
 };
