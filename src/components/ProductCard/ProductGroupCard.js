@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { ROUTER_KEY } from '../../utils/routerKeys';
 
 export default function ProductGroupCard({
   _id,
@@ -24,7 +25,7 @@ export default function ProductGroupCard({
 
   return (
     <div className="border-b border-opacity-25">
-      <Link to={'/product/' + _id} className="py-4">
+      <Link to={`${ROUTER_KEY.PRODUCT_GROUP}/${_id}`} className="py-4">
         <div className="px-2">
           <img
             onLoad={() => setImageLoaded(true)}
@@ -44,7 +45,7 @@ export default function ProductGroupCard({
       </Link>
       <div className="flex justify-around my-2 opacity-50">
         <Link
-          to={`/addProductGroup/${_id}`}
+          to={`${ROUTER_KEY.ADD_PRODUCT_GROUP}/${_id}`}
           className="flex justify-center w-full hover:bg-gray-300 transition-colors rounded py-1"
         >
           <svg

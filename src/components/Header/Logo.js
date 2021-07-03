@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
+import { ROUTER_KEY } from '../../utils/routerKeys';
 
 export default function Logo() {
   return (
-    <Link to="/">
+    <Link to={ROUTER_KEY.MAIN_PAGE}>
       <div className="select-none font-extrabold italic text-3xl tracking-wide group">
         <h1>
           <span>SMART</span>

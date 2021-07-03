@@ -6,6 +6,7 @@ import ButtonBlock from './ButtonsBlock';
 import Content from './ContentBlock';
 import ProductGroupInfo from '../../pages/ProductGroupInfo';
 import MainContentBlock from './MainContentBlock';
+import { ROUTER_KEY } from '../../utils/routerKeys';
 
 export default function MainSection() {
   return (
@@ -21,20 +22,29 @@ export default function MainSection() {
           <section className="px-3 md:px-8 py-6 bg-white rounded-md shadow">
             <Switch>
               <Route
-                path="/addProductGroup/:params"
+                path={ROUTER_KEY.ADD_PRODUCT_GROUP_EDIT}
                 children={<AddProductGroup />}
               ></Route>
               <Route
-                path="/addProductGroup"
+                path={ROUTER_KEY.ADD_PRODUCT_GROUP}
                 children={<AddProductGroup />}
               ></Route>
-              <Route path="/addProduct" children={<AddProduct />}></Route>
               <Route
-                path="/product/:params"
+                path={ROUTER_KEY.ADD_PRODUCT}
+                children={<AddProduct />}
+              ></Route>
+              <Route
+                path={ROUTER_KEY.PRODUCT_GROUP_INFO}
                 children={<ProductGroupInfo />}
               ></Route>
-              <Route path="/:params" children={<Content />}></Route>
-              <Route path="/" children={<MainContentBlock />}></Route>
+              <Route
+                path={ROUTER_KEY.PRODUCT_GROUPS_BY_CATEGORY}
+                children={<Content />}
+              ></Route>
+              <Route
+                path={ROUTER_KEY.MAIN_PAGE}
+                children={<MainContentBlock />}
+              ></Route>
             </Switch>
           </section>
         </div>
