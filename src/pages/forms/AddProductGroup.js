@@ -15,9 +15,11 @@ import {
   updateProductGroup,
 } from '../../redux/actions/productsGroup';
 import { foundProductsSelector } from '../../redux/selectors/productsSelectors';
+import { useHistory } from 'react-router';
 
 export default function AddProductGroup() {
   const { params } = useParams();
+  const history = useHistory();
   const dispatch = useDispatch();
   const products = useSelector(foundProductsSelector);
   const categories = useSelector(({ categories }) => categories.categories);
@@ -103,12 +105,7 @@ export default function AddProductGroup() {
         )
       : dispatch(createProductGroup(newProductCategory));
 
-    setNewProductCategory({
-      productIds: [],
-      category: '',
-      title: '',
-      photoURL: '',
-    });
+    history.goBack();
   };
 
   const onProductTitleSearchInput = (e) => {
