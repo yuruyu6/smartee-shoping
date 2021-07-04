@@ -45,13 +45,9 @@ const DEFAULT_CATEGORY = 'cpu';
 
 export default function SliderBlock() {
   const dispatch = useDispatch();
-  const products = useSelector(({ productsGroup }) =>
-    productsGroup.items?.slice(0, 16)
-  );
+  const products = useSelector(({ productsGroup }) => productsGroup.items);
   const isLoaded = useSelector(({ productsGroup }) => productsGroup.isLoaded);
-  const categories = useSelector(({ categories }) =>
-    categories.categories?.slice(0, 4)
-  );
+  const categories = useSelector(({ categories }) => categories.categories);
   const [currentCategory, setCurrentCategory] = useState(DEFAULT_CATEGORY);
 
   useEffect(() => {
@@ -71,7 +67,7 @@ export default function SliderBlock() {
       <div className="mt-6">
         <div className="flex justify-between align-middle items-center overflow-x-auto">
           <div className="flex">
-            {categories.map((category) => (
+            {categories?.slice(0, 4).map((category) => (
               <div
                 key={category._id}
                 className={
@@ -97,7 +93,7 @@ export default function SliderBlock() {
         {isLoaded ? (
           products.length > 0 ? (
             <Slider {...sliderSettings}>
-              {products.map((product) => (
+              {products?.slice(0, 16).map((product) => (
                 <div key={product._id}>
                   <ProductGroupCard {...product} />
                 </div>
