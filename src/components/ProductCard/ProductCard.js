@@ -5,8 +5,7 @@ export default function ProductCard({
   title,
   salePrice,
   averageStar,
-  orders,
-  edited,
+  orders
 }) {
   return (
     <div className="p-4 border-b border-opacity-25" title={title}>

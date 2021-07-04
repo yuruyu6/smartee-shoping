@@ -39,7 +39,6 @@ export const removeProductGroup = (id, currentCategory) => (dispatch) => {
 export const fetchProductGroupByCategory = (categoryName) => (dispatch) => {
   dispatch({
     type: 'CLEAR_PRODUCT_GROUP',
-    payload: false,
   });
 
   getProductGroupByCategoryName(categoryName).then(({ data }) =>

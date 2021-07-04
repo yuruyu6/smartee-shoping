@@ -35,6 +35,7 @@ export default function Content() {
                 <div key={product._id}>
                   <ProductGroupCard
                     {...product}
+                    isShowControlButtons={true}
                     deleteProductGroup={onDeleteProductGroup}
                   />
                 </div>
