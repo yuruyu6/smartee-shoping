@@ -19,10 +19,16 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "yarn"
-      - run: yarn
-      - run: yarn build --if-present
-      - run: yarn test
-      - name: Deploy with gh-pages
+
+      - name: Build
+        run: | 
+          yarn
+          yarn build --if-present
+          yarn test
+        env: 
+          REACT_APP_BACKEND_URL: ${{ secrets.REACT_APP_BACKEND_URL }}
+
+      - name: Deploy
         run: |
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
           npx gh-pages -d build -u "github-actions-bot <support+actions@github.com>"
