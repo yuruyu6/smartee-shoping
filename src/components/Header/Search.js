@@ -86,7 +86,7 @@ export default function Search() {
         </div>
       </div>
       {visibleSearchResults && (
-        <div className="absolute w-full py-6 rounded-b-xl shadow-xl border border-t-0 border-gray-300 bg-white animate-fade-in transition-all">
+        <div className="absolute max-h-screen w-full overflow-y-auto py-6 rounded-b-xl shadow-xl border border-t-0 border-gray-300 bg-white animate-fade-in transition-all">
           {productsGroup.length > 0 ? (
             productsGroup.map((productGroup) => (
               <InlineProductGroupCard
