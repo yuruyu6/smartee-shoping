@@ -7,7 +7,7 @@ import {
   updateProductsByProductGroupId,
 } from '../redux/actions/productsGroup';
 import { sortedProductsGroupSelector } from '../redux/selectors/productsGroupSelectors';
-import ProductGroupCard from '../components/ProductGroupCard/ProductGroupCard';
+import InlineProductCard from "../components/ProductCard/InlineProductCard";
 import SortPopup from '../components/SortPopup/SortPopup';
 import Title from '../components/UI/Title';
 
@@ -84,7 +84,7 @@ export default function ProductGroupInfo() {
                         target="_blank"
                         rel="noreferrer"
                       >
-                        <ProductGroupCard {...product} />
+                        <InlineProductCard {...product} />
                       </a>
                     </div>
                   )

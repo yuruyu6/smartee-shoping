@@ -3,6 +3,7 @@ import {
   deleteProductGroupById,
   getProductGroupByCategoryName,
   getProductGroupById,
+  getProductGroupByTitle,
   patchProductGroup,
   patchProductsByProductGroupId,
 } from '../../utils/API';
@@ -46,6 +47,16 @@ export const fetchProductGroupByCategory = (categoryName) => (dispatch) => {
   );
 };
 
+export const fetchProductGroupByTitle = (title) => (dispatch) => {
+  dispatch({
+    type: 'CLEAR_PRODUCT_GROUP_FOUNDED_ITEMS',
+  });
+
+  getProductGroupByTitle(title).then(({ data }) =>
+    dispatch(setProductGroupFoundedItems(data))
+  );
+};
+
 export const fetchProductGroupById = (id) => (dispatch) => {
   dispatch({
     type: 'CLEAR_PRODUCT_GROUP',
@@ -74,5 +85,10 @@ export const setSortBy = (sortType) => ({
 
 export const setProductGroup = (data) => ({
   type: 'SET_PRODUCT_GROUP',
+  payload: data,
+});
+
+export const setProductGroupFoundedItems = (data) => ({
+  type: 'SET_PRODUCT_GROUP_FOUNDED_ITEMS',
   payload: data,
 });

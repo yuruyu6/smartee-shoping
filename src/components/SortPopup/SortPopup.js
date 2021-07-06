@@ -28,6 +28,7 @@ export default memo(function SortPopup({
     document.body.addEventListener('click', handleOutsideClick);
     return () => {
       setVisiblePopup({});
+      document.body.removeEventListener('click', handleOutsideClick);
     };
   }, []);
 

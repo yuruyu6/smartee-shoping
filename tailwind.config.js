@@ -21,7 +21,7 @@ module.exports = {
         layout: '300px minmax(0, 1fr)',
       },
       animation: {
-        'fade-in': 'fadeIn 0.3s linear',
+        'fade-in': 'fadeIn 0.1s linear',
       },
     },
   },
@@ -30,6 +30,8 @@ module.exports = {
       opacity: ['disabled'],
       backgroundColor: ['odd'],
       borderColor: ['checked'],
+      borderWidth: ['focus'],
+      borderRadius: ['focus'],
     },
   },
   plugins: [require('@tailwindcss/forms')],

@@ -1,6 +1,6 @@
 const imageSize = 350;
 
-export default function ProductCard({
+export default function SimpleProductCard({
   images,
   title,
   salePrice,

@@ -5,8 +5,8 @@ import {
   fetchProductGroupByCategory,
   removeProductGroup,
 } from '../../redux/actions/productsGroup';
-import ProductGroupCard from '../ProductCard/ProductGroupCard';
 import ProductCardSkeleton from '../ProductCard/ProductCardSkeleton';
+import ProductGroupCard from '../ProductGroupCard/ProductGroupCard';
 import DataNotFound from '../UI/DataNotFound';
 import Title from '../UI/Title';
 

@@ -26,6 +26,10 @@ const getProductGroupByCategoryName = (categoryName) => {
   return axios.get(`/product-groups/detailed/${categoryName}`);
 };
 
+const getProductGroupByTitle = (title) => {
+  return axios.get(`/product-groups/byTitle/${title}`);
+};
+
 const getProductGroupById = (id) => {
   return axios.get(`/product-groups/${id}`);
 };
@@ -53,6 +57,7 @@ export {
   addProductById,
   addProductGroup,
   getProductGroupByCategoryName,
+  getProductGroupByTitle,
   getProductGroupById,
   patchProductGroup,
   deleteProductGroupById,

@@ -5,7 +5,7 @@ import Slider from 'react-slick';
 import { fetchCategories } from '../../redux/actions/categories';
 import { fetchProductGroupByCategory } from '../../redux/actions/productsGroup';
 import ProductCardSkeleton from '../ProductCard/ProductCardSkeleton';
-import ProductGroupCard from '../ProductCard/ProductGroupCard';
+import ProductGroupCard from '../ProductGroupCard/ProductGroupCard';
 import NextArrow from './NextArrow';
 import PrevArrow from './PrevArrow';
 import DataNotFound from '../UI/DataNotFound';

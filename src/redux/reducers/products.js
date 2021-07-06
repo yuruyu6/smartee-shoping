@@ -21,6 +21,12 @@ const products = (state = initialState, action) => {
         searchTerm: action.payload,
       };
 
+    case 'CLEAR_PRODUCTS':
+      return {
+        ...state,
+        items: [],
+      };
+
     case 'SET_LOADED':
       return {
         ...state,
