@@ -12,7 +12,7 @@ export default function Search() {
     ({ productsGroup }) => productsGroup.foundItems
   );
   const [visibleSearchResults, setVisibleSearchResults] = useState(false);
-  const [searchTerm, setSearchTerm] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('');
   const debouncedSearchTerm = useDebounce(searchTerm, 750);
 
   const handleOutsideClick = (event) => {
@@ -23,7 +23,9 @@ export default function Search() {
   };
 
   useEffect(() => {
-    dispatch(fetchProductGroupByTitle(debouncedSearchTerm));
+    if (debouncedSearchTerm !== '') {
+      dispatch(fetchProductGroupByTitle(debouncedSearchTerm));
+    }
   }, [dispatch, debouncedSearchTerm]);
 
   useEffect(() => {
@@ -35,6 +37,14 @@ export default function Search() {
 
   const onClickCard = () => {
     setVisibleSearchResults(false);
+  };
+
+  const onSearchFocus = () => {
+    setVisibleSearchResults(true);
+  };
+
+  const onSearchInput = (event) => {
+    setSearchTerm(event.target.value);
   };
 
   return (
@@ -70,8 +80,8 @@ export default function Search() {
             }
             placeholder="Поиск..."
             autoComplete="off"
-            onInput={(e) => setSearchTerm(e.target.value)}
-            onFocus={() => setVisibleSearchResults(true)}
+            onInput={(e) => onSearchInput(e)}
+            onFocus={() => onSearchFocus()}
           />
         </div>
       </div>
@@ -85,8 +95,10 @@ export default function Search() {
                 {...productGroup}
               />
             ))
-          ) : (
+          ) : debouncedSearchTerm !== '' ? (
             <NoSearchResult />
+          ) : (
+            <p className="text-xl italic">Начните вводить запрос...</p>
           )}
         </div>
       )}
