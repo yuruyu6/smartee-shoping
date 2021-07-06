@@ -5,7 +5,7 @@ import MainSection from './components/MainSection/MainSection';
 function App() {
   return (
     <div className="App bg-gray-100 min-h-screen">
-      <HashRouter basename={process.env.PUBLIC_URL}>
+      <HashRouter>
         <Header />
         <MainSection />
       </HashRouter>
