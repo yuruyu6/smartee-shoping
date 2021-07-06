@@ -1,26 +1,27 @@
 {
   "files": {
-    "main.css": "/smartee-shoping/static/css/main.70bf5600.chunk.css",
-    "main.js": "/smartee-shoping/static/js/main.69c36ee4.chunk.js",
-    "main.js.map": "/smartee-shoping/static/js/main.69c36ee4.chunk.js.map",
+    "main.css": "/smartee-shoping/static/css/main.3a8ec32e.chunk.css",
+    "main.js": "/smartee-shoping/static/js/main.549def51.chunk.js",
+    "main.js.map": "/smartee-shoping/static/js/main.549def51.chunk.js.map",
     "runtime-main.js": "/smartee-shoping/static/js/runtime-main.2c28efda.js",
     "runtime-main.js.map": "/smartee-shoping/static/js/runtime-main.2c28efda.js.map",
     "static/css/2.ebbf4714.chunk.css": "/smartee-shoping/static/css/2.ebbf4714.chunk.css",
-    "static/js/2.e586dffd.chunk.js": "/smartee-shoping/static/js/2.e586dffd.chunk.js",
-    "static/js/2.e586dffd.chunk.js.map": "/smartee-shoping/static/js/2.e586dffd.chunk.js.map",
+    "static/js/2.68a2f42b.chunk.js": "/smartee-shoping/static/js/2.68a2f42b.chunk.js",
+    "static/js/2.68a2f42b.chunk.js.map": "/smartee-shoping/static/js/2.68a2f42b.chunk.js.map",
     "index.html": "/smartee-shoping/index.html",
     "static/css/2.ebbf4714.chunk.css.map": "/smartee-shoping/static/css/2.ebbf4714.chunk.css.map",
-    "static/css/main.70bf5600.chunk.css.map": "/smartee-shoping/static/css/main.70bf5600.chunk.css.map",
-    "static/js/2.e586dffd.chunk.js.LICENSE.txt": "/smartee-shoping/static/js/2.e586dffd.chunk.js.LICENSE.txt",
+    "static/css/main.3a8ec32e.chunk.css.map": "/smartee-shoping/static/css/main.3a8ec32e.chunk.css.map",
+    "static/js/2.68a2f42b.chunk.js.LICENSE.txt": "/smartee-shoping/static/js/2.68a2f42b.chunk.js.LICENSE.txt",
     "static/media/face-savoring-food_emoji.0d5b1d11.png": "/smartee-shoping/static/media/face-savoring-food_emoji.0d5b1d11.png",
     "static/media/index.css": "/smartee-shoping/static/media/slick.c94f7671.ttf",
+    "static/media/worried-face_emoji.8fde2560.png": "/smartee-shoping/static/media/worried-face_emoji.8fde2560.png",
     "static/media/wrapped-gift_emoji.a2e86ea1.png": "/smartee-shoping/static/media/wrapped-gift_emoji.a2e86ea1.png"
   },
   "entrypoints": [
     "static/js/runtime-main.2c28efda.js",
     "static/css/2.ebbf4714.chunk.css",
-    "static/js/2.e586dffd.chunk.js",
-    "static/css/main.70bf5600.chunk.css",
-    "static/js/main.69c36ee4.chunk.js"
+    "static/js/2.68a2f42b.chunk.js",
+    "static/css/main.3a8ec32e.chunk.css",
+    "static/js/main.549def51.chunk.js"
   ]
 }
