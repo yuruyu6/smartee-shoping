@@ -1,27 +1,27 @@
 {
   "files": {
-    "main.css": "/static/css/main.2d10e320.chunk.css",
-    "main.js": "/static/js/main.b182b953.chunk.js",
-    "main.js.map": "/static/js/main.b182b953.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.056691b6.js",
-    "runtime-main.js.map": "/static/js/runtime-main.056691b6.js.map",
-    "static/css/2.bbbe21ee.chunk.css": "/static/css/2.bbbe21ee.chunk.css",
-    "static/js/2.68a2f42b.chunk.js": "/static/js/2.68a2f42b.chunk.js",
-    "static/js/2.68a2f42b.chunk.js.map": "/static/js/2.68a2f42b.chunk.js.map",
-    "index.html": "/index.html",
-    "static/css/2.bbbe21ee.chunk.css.map": "/static/css/2.bbbe21ee.chunk.css.map",
-    "static/css/main.2d10e320.chunk.css.map": "/static/css/main.2d10e320.chunk.css.map",
-    "static/js/2.68a2f42b.chunk.js.LICENSE.txt": "/static/js/2.68a2f42b.chunk.js.LICENSE.txt",
-    "static/media/face-savoring-food_emoji.0d5b1d11.png": "/static/media/face-savoring-food_emoji.0d5b1d11.png",
-    "static/media/index.css": "/static/media/slick.c94f7671.ttf",
-    "static/media/worried-face_emoji.8fde2560.png": "/static/media/worried-face_emoji.8fde2560.png",
-    "static/media/wrapped-gift_emoji.a2e86ea1.png": "/static/media/wrapped-gift_emoji.a2e86ea1.png"
+    "main.css": "/smartee-shoping/static/css/main.2d10e320.chunk.css",
+    "main.js": "/smartee-shoping/static/js/main.c0ba762a.chunk.js",
+    "main.js.map": "/smartee-shoping/static/js/main.c0ba762a.chunk.js.map",
+    "runtime-main.js": "/smartee-shoping/static/js/runtime-main.2c28efda.js",
+    "runtime-main.js.map": "/smartee-shoping/static/js/runtime-main.2c28efda.js.map",
+    "static/css/2.ebbf4714.chunk.css": "/smartee-shoping/static/css/2.ebbf4714.chunk.css",
+    "static/js/2.68a2f42b.chunk.js": "/smartee-shoping/static/js/2.68a2f42b.chunk.js",
+    "static/js/2.68a2f42b.chunk.js.map": "/smartee-shoping/static/js/2.68a2f42b.chunk.js.map",
+    "index.html": "/smartee-shoping/index.html",
+    "static/css/2.ebbf4714.chunk.css.map": "/smartee-shoping/static/css/2.ebbf4714.chunk.css.map",
+    "static/css/main.2d10e320.chunk.css.map": "/smartee-shoping/static/css/main.2d10e320.chunk.css.map",
+    "static/js/2.68a2f42b.chunk.js.LICENSE.txt": "/smartee-shoping/static/js/2.68a2f42b.chunk.js.LICENSE.txt",
+    "static/media/face-savoring-food_emoji.0d5b1d11.png": "/smartee-shoping/static/media/face-savoring-food_emoji.0d5b1d11.png",
+    "static/media/index.css": "/smartee-shoping/static/media/slick.c94f7671.ttf",
+    "static/media/worried-face_emoji.8fde2560.png": "/smartee-shoping/static/media/worried-face_emoji.8fde2560.png",
+    "static/media/wrapped-gift_emoji.a2e86ea1.png": "/smartee-shoping/static/media/wrapped-gift_emoji.a2e86ea1.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.056691b6.js",
-    "static/css/2.bbbe21ee.chunk.css",
+    "static/js/runtime-main.2c28efda.js",
+    "static/css/2.ebbf4714.chunk.css",
     "static/js/2.68a2f42b.chunk.js",
     "static/css/main.2d10e320.chunk.css",
-    "static/js/main.b182b953.chunk.js"
+    "static/js/main.c0ba762a.chunk.js"
   ]
 }
