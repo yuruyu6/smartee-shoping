@@ -87,7 +87,31 @@ export default function MenuList() {
           </div>
 
           <p className="cursor-pointer leading-10 font-medium text-sm opacity-75">
-            Жесткие диски (SSD)
+            Накопители
+          </p>
+        </Link>
+      </li>
+      <li className="h-10 px-5 hover:bg-gray-100 group mb-2">
+        <Link className="flex align-middle" to="/accessories">
+          <div className="rounded flex justify-center bg-yellow-500 group-hover:bg-opacity-75 transition mr-3">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="w-7 mx-1.5 text-white relative"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"
+              />
+            </svg>
+          </div>
+
+          <p className="cursor-pointer leading-10 font-medium text-sm opacity-75">
+            Аксессуары
           </p>
         </Link>
       </li>
