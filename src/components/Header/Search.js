@@ -49,7 +49,7 @@ export default function Search() {
 
   return (
     <div className="relative" ref={searchInputRef}>
-      <div className="">
+      <div>
         <div className="relative text-gray-600">
           <span className="absolute inset-y-0 left-0 flex items-center pl-2">
             <button

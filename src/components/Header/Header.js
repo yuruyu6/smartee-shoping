@@ -14,7 +14,7 @@ export default function Header() {
             <HamburgerMenu />
             <Logo />
           </div>
-          <div className="flex-auto p-3 sm:pl-8">
+          <div className="flex-auto p-3 sm:pl-7">
             <Search />
           </div>
           <div className="hidden sm:block flex-none px-6">
