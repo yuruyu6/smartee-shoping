@@ -33,7 +33,7 @@ export default function ProductGroupCard({
             onLoad={() => setImageLoaded(true)}
             className={
               imageLoaded
-                ? 'opacity-100 transition-opacity h-auto'
+                ? 'opacity-100 transition-opacity h-full object-contain'
                 : 'opacity-0 transition-opacity'
             }
             src={photoURL + `_${imageSize}x${imageSize}.jpg`}

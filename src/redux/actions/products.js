@@ -38,7 +38,13 @@ export const addProduct = (productId) => (dispatch) => {
   addProductById(productId)
     .then(
       () => dispatch(enqueueNotification('Товар успешно добавлен', 'success')),
-      (error) => dispatch(enqueueNotification(error.message, 'error'))
+      (error) =>
+        dispatch(
+          enqueueNotification(
+            'Возникла проблема при добавлении товара, возможно он уже добавлен',
+            'error'
+          )
+        )
     )
     .finally(() => {
       dispatch({
