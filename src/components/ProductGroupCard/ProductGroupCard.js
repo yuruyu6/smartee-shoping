@@ -33,7 +33,7 @@ export default function ProductGroupCard({
             onLoad={() => setImageLoaded(true)}
             className={
               imageLoaded
-                ? 'opacity-100 transition-opacity h-full object-contain'
+                ? 'opacity-100 transition-opacity h-cardphoto w-cardphoto object-contain m-auto'
                 : 'opacity-0 transition-opacity'
             }
             src={photoURL + `_${imageSize}x${imageSize}.jpg`}
@@ -50,6 +50,7 @@ export default function ProductGroupCard({
           <Link
             to={`${ROUTER_KEY.ADD_PRODUCT_GROUP}/${_id}`}
             className="flex justify-center w-full hover:bg-gray-300 transition-colors rounded py-1"
+            aria-label="Edit"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -68,6 +69,7 @@ export default function ProductGroupCard({
           <button
             onClick={() => onClickDeleteButton(_id)}
             className="flex justify-center w-full hover:bg-gray-300 transition-colors rounded py-1"
+            aria-label="Delete"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

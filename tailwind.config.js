@@ -8,6 +8,9 @@ module.exports = {
       sans: ['Inter', ...defaultTheme.fontFamily.sans],
     },
     extend: {
+      weight: {
+        cardphoto: '257px',
+      },
       height: {
         cardphoto: '257px',
       },

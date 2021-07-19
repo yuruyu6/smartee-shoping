@@ -3,8 +3,8 @@ import { ROUTER_KEY } from '../../utils/routerKeys';
 
 export default function ButtonBlock() {
   return (
-    <div className="flex">
-      <div className="flex-1 text-center pr-4 mb-3 group">
+    <div className="block mx-4 mb-4 sm:m-0 sm:flex gap-3">
+      <div className="flex-1 text-center mb-3 group">
         <Link
           to={ROUTER_KEY.ADD_PRODUCT}
           className="inline-flex w-full px-5 py-4 text-gray-600 rounded border border-gray-200 group-hover:bg-gray-300 transition"

@@ -4,13 +4,13 @@ import { useParams } from 'react-router-dom';
 import {
   fetchProductGroupByCategory,
   removeProductGroup,
-} from '../../redux/actions/productsGroup';
-import ProductCardSkeleton from '../ProductCard/ProductCardSkeleton';
-import ProductGroupCard from '../ProductGroupCard/ProductGroupCard';
-import DataNotFound from '../UI/DataNotFound';
-import Title from '../UI/Title';
+} from '../redux/actions/productsGroup';
+import ProductCardSkeleton from '../components/ProductCard/ProductCardSkeleton';
+import ProductGroupCard from '../components/ProductGroupCard/ProductGroupCard';
+import DataNotFound from '../components/UI/DataNotFound';
+import Title from '../components/UI/Title';
 
-export default function Content() {
+export default function CategoryInfo() {
   const dispatch = useDispatch();
   const products = useSelector(({ productsGroup }) => productsGroup.items);
   const isLoaded = useSelector(({ productsGroup }) => productsGroup.isLoaded);

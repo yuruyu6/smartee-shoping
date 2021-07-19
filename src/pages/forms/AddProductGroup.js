@@ -42,6 +42,14 @@ export default function AddProductGroup() {
     if (params) {
       setIsEditorMode(true);
       dispatch(fetchProductGroupById(params));
+    } else {
+      setIsEditorMode(false);
+      setNewProductCategory({
+        productIds: [],
+        category: '',
+        title: '',
+        photoURL: '',
+      });
     }
   }, [dispatch, params]);
 

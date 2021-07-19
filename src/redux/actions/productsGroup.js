@@ -21,7 +21,7 @@ export const updateProductGroup = (id, updateProductGroupDTO) => (dispatch) => {
   patchProductGroup(id, updateProductGroupDTO).then(
     () =>
       dispatch(
-        enqueueNotification('Новая группа успешно обновлена', 'success')
+        enqueueNotification('Группа успешно обновлена', 'success')
       ),
     (error) => dispatch(enqueueNotification(error.message, 'error'))
   );
@@ -68,7 +68,7 @@ export const fetchProductGroupById = (id) => (dispatch) => {
 
 export const updateProductsByProductGroupId = (id) => (dispatch) => {
   dispatch(
-    enqueueNotification('Запрос на обновление успешно создан', 'success')
+    enqueueNotification('Запрос на обновление создан', 'success')
   );
 
   patchProductsByProductGroupId(id).then(
