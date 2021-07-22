@@ -58,7 +58,7 @@ export default function ProductGroupInfo() {
             <div className="flex flex-col justify-between mt-4 md:m-0">
               <Title text={productsGroup.title} />
             </div>
-            <div className="hidden md:block">
+            <div className="hidden md:block ml-4">
               <button
                 className="cursor-pointer text-gray-400 font-semibold border-b-2 border-dashed border-gray-400 focus:outline-black hover:bg-gray-200 transition "
                 onClick={() => onClickUpdateButton()}
