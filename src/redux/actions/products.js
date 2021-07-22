@@ -3,18 +3,19 @@ import {
   addProductById,
   getProducts,
 } from '../../utils/API';
+import {
+  SET_PRODUCTS,
+  SET_PRODUCTS_LOADED,
+  SET_PRODUCTS_SEARCH_TERM,
+  SET_PRODUCTS_WAITING,
+} from '../types';
 import { enqueueNotification } from './notifications';
-
-export const setLoaded = (payload) => ({
-  type: 'SET_LOADED',
-  payload,
-});
 
 export const fetchProducts =
   (withoutCategory = false) =>
   (dispatch) => {
     dispatch({
-      type: 'SET_LOADED',
+      type: SET_PRODUCTS_LOADED,
       payload: false,
     });
 
@@ -31,7 +32,7 @@ export const fetchProducts =
 
 export const addProduct = (productId) => (dispatch) => {
   dispatch({
-    type: 'SET_WAITING',
+    type: SET_PRODUCTS_WAITING,
     payload: true,
   });
 
@@ -48,18 +49,18 @@ export const addProduct = (productId) => (dispatch) => {
     )
     .finally(() => {
       dispatch({
-        type: 'SET_WAITING',
+        type: SET_PRODUCTS_WAITING,
         payload: false,
       });
     });
 };
 
 export const setProducts = (items) => ({
-  type: 'SET_PRODUCTS',
+  type: SET_PRODUCTS,
   payload: items,
 });
 
 export const setProductsSearchTerm = (searchTeam) => ({
-  type: 'SET_PRODUCTS_SEARCH_TERM',
+  type: SET_PRODUCTS_SEARCH_TERM,
   payload: searchTeam,
 });

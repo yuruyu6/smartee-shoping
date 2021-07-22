@@ -7,6 +7,13 @@ import {
   patchProductGroup,
   patchProductsByProductGroupId,
 } from '../../utils/API';
+import {
+  CLEAR_PRODUCTS_GROUP,
+  CLEAR_PRODUCTS_GROUP_FOUNDED_ITEMS,
+  SET_PRODUCTS_GROUP_SORT_BY,
+  SET_PRODUCTS_GROUP,
+  SET_PRODUCTS_GROUP_FOUNDED_ITEMS,
+} from '../types';
 import { enqueueNotification } from './notifications';
 
 export const createProductGroup = (createProductGroupDTO) => (dispatch) => {
@@ -19,10 +26,7 @@ export const createProductGroup = (createProductGroupDTO) => (dispatch) => {
 
 export const updateProductGroup = (id, updateProductGroupDTO) => (dispatch) => {
   patchProductGroup(id, updateProductGroupDTO).then(
-    () =>
-      dispatch(
-        enqueueNotification('Группа успешно обновлена', 'success')
-      ),
+    () => dispatch(enqueueNotification('Группа успешно обновлена', 'success')),
     (error) => dispatch(enqueueNotification(error.message, 'error'))
   );
 };
@@ -39,7 +43,7 @@ export const removeProductGroup = (id, currentCategory) => (dispatch) => {
 
 export const fetchProductGroupByCategory = (categoryName) => (dispatch) => {
   dispatch({
-    type: 'CLEAR_PRODUCT_GROUP',
+    type: CLEAR_PRODUCTS_GROUP,
   });
 
   getProductGroupByCategoryName(categoryName).then(({ data }) =>
@@ -49,7 +53,7 @@ export const fetchProductGroupByCategory = (categoryName) => (dispatch) => {
 
 export const fetchProductGroupByTitle = (title) => (dispatch) => {
   dispatch({
-    type: 'CLEAR_PRODUCT_GROUP_FOUNDED_ITEMS',
+    type: CLEAR_PRODUCTS_GROUP_FOUNDED_ITEMS,
   });
 
   getProductGroupByTitle(title).then(({ data }) =>
@@ -59,7 +63,7 @@ export const fetchProductGroupByTitle = (title) => (dispatch) => {
 
 export const fetchProductGroupById = (id) => (dispatch) => {
   dispatch({
-    type: 'CLEAR_PRODUCT_GROUP',
+    type: CLEAR_PRODUCTS_GROUP,
     payload: false,
   });
 
@@ -67,9 +71,7 @@ export const fetchProductGroupById = (id) => (dispatch) => {
 };
 
 export const updateProductsByProductGroupId = (id) => (dispatch) => {
-  dispatch(
-    enqueueNotification('Запрос на обновление создан', 'success')
-  );
+  dispatch(enqueueNotification('Запрос на обновление создан', 'success'));
 
   patchProductsByProductGroupId(id).then(
     () => '',
@@ -79,16 +81,16 @@ export const updateProductsByProductGroupId = (id) => (dispatch) => {
 };
 
 export const setSortBy = (sortType) => ({
-  type: 'SET_SORT_BY',
+  type: SET_PRODUCTS_GROUP_SORT_BY,
   payload: sortType,
 });
 
 export const setProductGroup = (data) => ({
-  type: 'SET_PRODUCT_GROUP',
+  type: SET_PRODUCTS_GROUP,
   payload: data,
 });
 
 export const setProductGroupFoundedItems = (data) => ({
-  type: 'SET_PRODUCT_GROUP_FOUNDED_ITEMS',
+  type: SET_PRODUCTS_GROUP_FOUNDED_ITEMS,
   payload: data,
 });

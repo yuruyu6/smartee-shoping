@@ -1,10 +1,12 @@
+import { SHOW_NOTIFICATION, HIDE_NOTIFICATION } from '../types';
+
 const initialState = {
   notifications: [],
 };
 
 const notifications = (state = initialState, action) => {
   switch (action.type) {
-    case 'SHOW_NOTIFICATION':
+    case SHOW_NOTIFICATION:
       return {
         ...state,
         notifications: [
@@ -13,7 +15,7 @@ const notifications = (state = initialState, action) => {
         ],
       };
 
-    case 'HIDE_NOTIFICATION':
+    case HIDE_NOTIFICATION:
       return {
         ...state,
         notifications: state.notifications.filter(

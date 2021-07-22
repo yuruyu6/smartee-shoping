@@ -1,5 +1,7 @@
+import { HIDE_NOTIFICATION, SHOW_NOTIFICATION } from '../types';
+
 export const enqueueNotification = (notification, type) => ({
-  type: 'SHOW_NOTIFICATION',
+  type: SHOW_NOTIFICATION,
   payload: {
     message: notification,
     key: new Date().getTime() + Math.random(),
@@ -9,6 +11,6 @@ export const enqueueNotification = (notification, type) => ({
 });
 
 export const closeNotification = (key) => ({
-  type: 'HIDE_NOTIFICATION',
+  type: HIDE_NOTIFICATION,
   payload: key,
 });

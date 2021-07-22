@@ -1,38 +1,48 @@
+import {
+  CLEAR_PRODUCTS_GROUP,
+  CLEAR_PRODUCTS_GROUP_FOUNDED_ITEMS,
+  SET_PRODUCTS_GROUP,
+  SET_PRODUCTS_GROUP_FOUNDED_ITEMS,
+  SET_PRODUCTS_GROUP_SORT_BY,
+} from '../types';
+
+const DEFAULT_SORT_PARAM = 'asc_price';
+
 const initialState = {
   items: [],
   foundItems: [],
   isLoaded: false,
-  sortParam: 'asc_price',
+  sortParam: DEFAULT_SORT_PARAM,
 };
 
 const productsGroup = (state = initialState, action) => {
   switch (action.type) {
-    case 'SET_PRODUCT_GROUP':
+    case SET_PRODUCTS_GROUP:
       return {
         ...state,
         items: action.payload,
         isLoaded: true,
       };
 
-    case 'CLEAR_PRODUCT_GROUP':
+    case CLEAR_PRODUCTS_GROUP:
       return {
         ...state,
         items: [],
         isLoaded: false,
       };
 
-    case 'SET_SORT_BY':
+    case SET_PRODUCTS_GROUP_SORT_BY:
       return {
         ...state,
         sortParam: action.payload,
       };
 
-    case 'SET_PRODUCT_GROUP_FOUNDED_ITEMS':
+    case SET_PRODUCTS_GROUP_FOUNDED_ITEMS:
       return {
         ...state,
         foundItems: action.payload,
       };
-    case 'CLEAR_PRODUCT_GROUP_FOUNDED_ITEMS':
+    case CLEAR_PRODUCTS_GROUP_FOUNDED_ITEMS:
       return {
         ...state,
         foundItems: [],

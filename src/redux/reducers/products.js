@@ -1,3 +1,11 @@
+import {
+  CLEAR_PRODUCTS,
+  SET_PRODUCTS,
+  SET_PRODUCTS_LOADED,
+  SET_PRODUCTS_SEARCH_TERM,
+  SET_PRODUCTS_WAITING,
+} from '../types';
+
 const initialState = {
   items: [],
   searchTerm: '',
@@ -7,7 +15,7 @@ const initialState = {
 
 const products = (state = initialState, action) => {
   switch (action.type) {
-    case 'SET_PRODUCTS':
+    case SET_PRODUCTS:
       return {
         ...state,
         items: action.payload,
@@ -15,25 +23,25 @@ const products = (state = initialState, action) => {
         isLoaded: true,
       };
 
-    case 'SET_PRODUCTS_SEARCH_TERM':
+    case SET_PRODUCTS_SEARCH_TERM:
       return {
         ...state,
         searchTerm: action.payload,
       };
 
-    case 'CLEAR_PRODUCTS':
+    case CLEAR_PRODUCTS:
       return {
         ...state,
         items: [],
       };
 
-    case 'SET_LOADED':
+    case SET_PRODUCTS_LOADED:
       return {
         ...state,
         isLoaded: action.payload,
       };
 
-    case 'SET_WAITING':
+    case SET_PRODUCTS_WAITING:
       return {
         ...state,
         isWaitingResponce: action.payload,

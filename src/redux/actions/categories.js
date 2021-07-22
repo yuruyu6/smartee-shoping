@@ -1,13 +1,9 @@
 import { getCategories } from '../../utils/API';
-
-export const setLoaded = (payload) => ({
-  type: 'SET_LOADED',
-  payload,
-});
+import { SET_CATEGORIES, SET_CATEGORIES_LOADED } from '../types';
 
 export const fetchCategories = () => (dispatch) => {
   dispatch({
-    type: 'SET_LOADED',
+    type: SET_CATEGORIES_LOADED,
     payload: false,
   });
 
@@ -17,6 +13,6 @@ export const fetchCategories = () => (dispatch) => {
 };
 
 export const setCategories = (items) => ({
-  type: 'SET_CATEGORIES',
+  type: SET_CATEGORIES,
   payload: items,
 });
