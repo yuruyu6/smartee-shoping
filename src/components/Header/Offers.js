@@ -1,6 +1,6 @@
 export default function Offers() {
   return (
-    <div className="relative inline-flex">
+    <div className="relative inline-flex" role="button" tabIndex="0">
       <span className="h-7 w-7 cursor-pointer transition duration-300 ease-in-out text-gray-500 hover:text-gray-800">
         <svg
           xmlns="http://www.w3.org/2000/svg"

@@ -43,6 +43,10 @@ export default function Search() {
     setVisibleSearchResults(true);
   };
 
+  const onSearchBlur = () => {
+    setVisibleSearchResults(false);
+  };
+
   const onSearchInput = (event) => {
     setSearchTerm(event.target.value);
   };
@@ -82,6 +86,7 @@ export default function Search() {
             autoComplete="off"
             onInput={(e) => onSearchInput(e)}
             onFocus={() => onSearchFocus()}
+            onBlur={() => onSearchBlur()}
           />
         </div>
       </div>

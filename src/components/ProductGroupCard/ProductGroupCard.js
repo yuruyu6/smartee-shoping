@@ -8,15 +8,10 @@ export default function ProductGroupCard({
   _id,
   photoURL,
   title,
-  productIds,
+  minPrice,
   deleteProductGroup,
   isShowControlButtons,
 }) {
-  const minPrice =
-    productIds.reduce((prev, curr) => {
-      return prev?.salePrice.min < curr?.salePrice.min ? prev : curr;
-    }).salePrice.min || '...';
-
   const [imageLoaded, setImageLoaded] = useState(false);
 
   const onClickDeleteButton = (id) => {
