@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/smartee-shoping/static/css/main.c4fe4fe0.chunk.css",
-    "main.js": "/smartee-shoping/static/js/main.60ef9213.chunk.js",
-    "main.js.map": "/smartee-shoping/static/js/main.60ef9213.chunk.js.map",
+    "main.js": "/smartee-shoping/static/js/main.9f37f21e.chunk.js",
+    "main.js.map": "/smartee-shoping/static/js/main.9f37f21e.chunk.js.map",
     "runtime-main.js": "/smartee-shoping/static/js/runtime-main.878da68d.js",
     "runtime-main.js.map": "/smartee-shoping/static/js/runtime-main.878da68d.js.map",
     "static/css/2.ebbf4714.chunk.css": "/smartee-shoping/static/css/2.ebbf4714.chunk.css",
@@ -35,6 +35,6 @@
     "static/css/2.ebbf4714.chunk.css",
     "static/js/2.99055e71.chunk.js",
     "static/css/main.c4fe4fe0.chunk.css",
-    "static/js/main.60ef9213.chunk.js"
+    "static/js/main.9f37f21e.chunk.js"
   ]
 }
