@@ -16,7 +16,6 @@ export default function InlineProductGroupCard({
     <div
       className="hover:bg-gray-100 transition-colors mt-2"
       onClick={onClickCard}
-      tabIndex="0"
     >
       <Link to={`${ROUTER_KEY.PRODUCT_GROUP}/${_id}`} className="py-4 ">
         <div className="flex px-2">
