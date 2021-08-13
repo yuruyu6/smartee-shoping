@@ -11,8 +11,8 @@ import { sortedProductsGroupSelector } from '../redux/selectors/productsGroupSel
 import InlineProductCard from '../components/ProductCard/InlineProductCard';
 import SortPopup from '../components/SortPopup/SortPopup';
 import Title from '../components/UI/Title';
+import { DEFAULT_CARD_IMAGE_SIZE } from '../utils/constants';
 
-const imageSize = 350;
 const defaultSortType = 'asc_price';
 const sortTypes = [
   { name: 'цене', type: 'asc_price' },
@@ -49,7 +49,8 @@ export default function ProductGroupInfo() {
                 <img
                   className="h-cardphoto w-cardphoto object-cover"
                   src={
-                    productsGroup.photoURL + `_${imageSize}x${imageSize}.jpg`
+                    productsGroup.photoURL +
+                    `_${DEFAULT_CARD_IMAGE_SIZE}x${DEFAULT_CARD_IMAGE_SIZE}.jpg`
                   }
                   alt={productsGroup.title}
                 />

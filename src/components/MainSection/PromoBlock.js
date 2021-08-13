@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import FaceSavoringFoodEmoji from '../../assets/face-savoring-food_emoji.png';
 import WrappedGiftEmoji from '../../assets/wrapped-gift_emoji.png';
-
-const PROMOCODE_TEXT = 'P49AH514';
+import { PROMOCODE } from '../../utils/constants';
 
 export default function PromoBlock() {
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -17,8 +16,8 @@ export default function PromoBlock() {
             </p>
           </div>
           <div className="px-4 py-1 sm:w-1/2 border-4 border-white border-dashed rounded-xl shadow font-medium bg-white bg-opacity-20 text-center hover:bg-opacity-95 hover:shadow-md hover:text-yellow-500 cursor-pointer transition-all">
-            <p onClick={() => navigator.clipboard.writeText(PROMOCODE_TEXT)}>
-              {PROMOCODE_TEXT}
+            <p onClick={() => navigator.clipboard.writeText(PROMOCODE)}>
+              {PROMOCODE}
             </p>
           </div>
         </div>

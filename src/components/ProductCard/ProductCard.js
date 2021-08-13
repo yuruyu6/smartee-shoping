@@ -1,13 +1,15 @@
 import PropTypes from 'prop-types';
-
-const imageSize = 350;
+import { DEFAULT_CARD_IMAGE_SIZE } from '../../utils/constants';
 
 function SimpleProductCard({ images, title, salePrice, averageStar, orders }) {
   return (
     <div className="p-4 border-b border-opacity-25" title={title}>
       <img
         className="h-auto"
-        src={images[0] + `_${imageSize}x${imageSize}.jpg`}
+        src={
+          images[0] +
+          `_${DEFAULT_CARD_IMAGE_SIZE}x${DEFAULT_CARD_IMAGE_SIZE}.jpg`
+        }
         alt={title}
       />
       <p className="truncate">{title}</p>
