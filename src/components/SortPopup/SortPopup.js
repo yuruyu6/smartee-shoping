@@ -1,11 +1,8 @@
+import PropTypes from 'prop-types';
 import { memo, useEffect, useRef, useState } from 'react';
 import SortPopupOptions from './SortPopupOptions';
 
-export default memo(function SortPopup({
-  items,
-  activeSortType,
-  onClickSortType,
-}) {
+function SortPopup({ items, activeSortType, onClickSortType }) {
   const [visiblePopup, setVisiblePopup] = useState(false);
   const sortButtonPopupRef = useRef();
   let arrayOfOptionsRefs = [];
@@ -111,4 +108,20 @@ export default memo(function SortPopup({
       )}
     </div>
   );
-});
+}
+
+SortPopup.propTypes = {
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.oneOf(['цене', 'рейтингу', 'количеству заказов']),
+      type: PropTypes.oneOf(['asc_price', 'desc_rating', 'desc_orders']),
+    })
+  ),
+  activeSortType: PropTypes.shape({
+    name: PropTypes.oneOf(['цене', 'рейтингу', 'количеству заказов']),
+    type: PropTypes.oneOf(['asc_price', 'desc_rating', 'desc_orders']),
+  }),
+  onClickSortType: PropTypes.func,
+};
+
+export default memo(SortPopup);

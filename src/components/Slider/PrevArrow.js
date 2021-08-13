@@ -1,6 +1,4 @@
-export default function PrewArrow(props) {
-  const { onClick } = props;
-
+export default function PrewArrow({ onClick }) {
   return (
     <div
       className={

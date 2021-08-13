@@ -1,12 +1,8 @@
+import PropTypes from 'prop-types';
+
 const imageSize = 350;
 
-export default function SimpleProductCard({
-  images,
-  title,
-  salePrice,
-  averageStar,
-  orders
-}) {
+function SimpleProductCard({ images, title, salePrice, averageStar, orders }) {
   return (
     <div className="p-4 border-b border-opacity-25" title={title}>
       <img
@@ -59,3 +55,13 @@ export default function SimpleProductCard({
     </div>
   );
 }
+
+SimpleProductCard.propTypes = {
+  images: PropTypes.arrayOf(PropTypes.string).isRequired,
+  title: PropTypes.string.isRequired,
+  salePrice: PropTypes.objectOf(PropTypes.number).isRequired,
+  averageStar: PropTypes.string.isRequired,
+  orders: PropTypes.number.isRequired,
+};
+
+export default SimpleProductCard;

@@ -1,6 +1,7 @@
+import PropTypes from 'prop-types';
 import dayjs from 'dayjs';
 
-export default function InlineProductGroup({
+function InlineProductGroup({
   title,
   storeName,
   averageStar,
@@ -89,3 +90,14 @@ export default function InlineProductGroup({
     </div>
   );
 }
+
+InlineProductGroup.propTypes = {
+  title: PropTypes.string,
+  storeName: PropTypes.string,
+  averageStar: PropTypes.string,
+  salePrice: PropTypes.object,
+  orders: PropTypes.number,
+  edited: PropTypes.number,
+};
+
+export default InlineProductGroup;

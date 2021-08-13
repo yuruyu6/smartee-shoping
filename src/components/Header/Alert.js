@@ -1,6 +1,7 @@
+import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 
-export default function Alert({ notification, onClickCloseButton }) {
+function Alert({ notification, onClickCloseButton }) {
   let hideNotificationTimeout = setTimeout(
     () => onClickCloseButton(notification.key),
     notification.autoHideDuration
@@ -72,3 +73,12 @@ export default function Alert({ notification, onClickCloseButton }) {
     </div>
   );
 }
+
+Alert.propTypes = {
+  notification: PropTypes.objectOf(
+    PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+  ).isRequired,
+  onClickCloseButton: PropTypes.func,
+};
+
+export default Alert;

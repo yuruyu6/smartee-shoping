@@ -1,15 +1,11 @@
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ROUTER_KEY } from '../../utils/routerKeys';
 
 const imageSize = 350;
 
-export default function InlineProductGroupCard({
-  _id,
-  photoURL,
-  title,
-  onClickCard,
-}) {
+function InlineProductGroupCard({ _id, photoURL, title, onClickCard }) {
   const [imageLoaded, setImageLoaded] = useState(false);
 
   return (
@@ -35,3 +31,12 @@ export default function InlineProductGroupCard({
     </div>
   );
 }
+
+InlineProductGroupCard.propTypes = {
+  _id: PropTypes.string.isRequired,
+  photoURL: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  onClickCard: PropTypes.func.isRequired,
+};
+
+export default InlineProductGroupCard;

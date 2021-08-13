@@ -3,7 +3,9 @@ import { closeNotification } from '../../redux/actions/notifications';
 import Alert from './Alert';
 
 export default function Notification() {
-  const notifications = useSelector(({ notifications }) => notifications.notifications);
+  const notifications = useSelector(
+    ({ notifications }) => notifications.notifications
+  );
   const dispatch = useDispatch();
 
   const onClickCloseButton = (key) => dispatch(closeNotification(key));

@@ -1,10 +1,11 @@
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ROUTER_KEY } from '../../utils/routerKeys';
 
 const imageSize = 350;
 
-export default function ProductGroupCard({
+function ProductGroupCard({
   _id,
   photoURL,
   title,
@@ -84,3 +85,14 @@ export default function ProductGroupCard({
     </div>
   );
 }
+
+ProductGroupCard.propTypes = {
+  _id: PropTypes.string.isRequired,
+  photoURL: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  minPrice: PropTypes.number.isRequired,
+  deleteProductGroup: PropTypes.func,
+  isShowControlButtons: PropTypes.bool,
+};
+
+export default ProductGroupCard;

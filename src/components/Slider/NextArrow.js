@@ -1,6 +1,4 @@
-export default function NextArrow(props) {
-  const { onClick } = props;
-
+export default function NextArrow({ onClick }) {
   return (
     <div
       className={
