@@ -35,4 +35,4 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 - [ ] Add pagination for editor forms
 - [ ] Rewrite search logic
 - [ ] Add more content and features like mainpage news block, likes, user reviews
-- [ ] Increase unit tests code coverage 
+- [ ] Increase unit tests code coverage
