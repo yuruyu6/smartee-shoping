@@ -140,13 +140,11 @@ export default function AddProductGroup() {
 
   return (
     <div>
-      <Title
-        text={
-          isEditorMode
-            ? 'Редактирование группы товаров'
-            : 'Создание новой группы товаров'
-        }
-      />
+      <Title>
+        {isEditorMode
+          ? 'Редактирование группы товаров'
+          : 'Создание новой группы товаров'}
+      </Title>
       <div className="block xl:flex mb-4">
         <div className="flex-1">
           <p className="text-lg">Название:</p>

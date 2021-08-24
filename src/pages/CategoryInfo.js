@@ -29,7 +29,7 @@ export default function CategoryInfo() {
       {isLoaded ? (
         products.length > 0 ? (
           <div>
-            <Title text={products[0].category.title} />
+            <Title>{products[0].category.title}</Title>
             <div className="grid grid-cols-2 xl:grid-cols-4">
               {products.map((product) => (
                 <div key={product._id}>

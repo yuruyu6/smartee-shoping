@@ -57,7 +57,7 @@ export default function ProductGroupInfo() {
               )}
             </div>
             <div className="flex flex-col justify-between mt-4 md:m-0">
-              <Title text={productsGroup.title} />
+              <Title>{productsGroup.title}</Title>
             </div>
             <div className="hidden md:block ml-4">
               <button

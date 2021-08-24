@@ -29,7 +29,7 @@ export default function AddProduct() {
 
   return (
     <div>
-      <Title text="Добавление товара" />
+      <Title>Добавление товара</Title>
       <div className="mb-4">
         <div className="flex-1">
           <p className="text-lg">Ссылка на товар:</p>
